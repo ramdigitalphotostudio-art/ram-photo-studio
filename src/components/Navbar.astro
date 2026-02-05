@@ -1,0 +1,499 @@
+---
+const navItems = [
+  { name: "Home", link: "/" },
+  { name: "About Us", link: "/about-us" },
+  { name: "Gallery", link: "/gallery" },
+  {
+    name: "Still Photography",
+    link: "/still-photography",
+    items: [
+      { name: "Studio Photography", link: "/still-photography#studio" },
+      { name: "Matrimonial Photography", link: "/still-photography#matrimonial" },
+      { name: "Baby Photoshoot", link: "/still-photography#baby" },
+      { name: "Product Photoshoot", link: "/still-photography#product" },
+      { name: "Outdoor Photography", link: "/still-photography#outdoor" },
+      { name: "Event Photography", link: "/still-photography#event" },
+    ],
+  },
+  {
+    name: "Videography",
+    link: "/videography",
+    items: [
+      { name: "Cinematography", link: "/videography#cinematography" },
+      { name: "Invitation Videos", link: "/videography#invitation" },
+      { name: "Teasers", link: "/videography#teasers" },
+      { name: "Drone & LED", link: "/videography#drone" },
+    ],
+  },
+  {
+    name: "Printing Solutions",
+    link: "/printing-solutions",
+    items: [
+      { name: "Large Format", link: "/printing-solutions#largeformat" },
+      { name: "A0 Scanning", link: "/printing-solutions#scanning" },
+      { name: "Cameo Cutting", link: "/printing-solutions#cameo" },
+      { name: "Copier Services", link: "/printing-solutions#copier" },
+    ],
+  },
+  {
+    name: "Gift Items",
+    link: "/gifts-items",
+    items: [
+      { name: "Sublimation", link: "/gifts-items#sublimation" },
+      { name: "Cushions", link: "/gifts-items#cushions" },
+      { name: "LED Items", link: "/gifts-items#led" },
+      { name: "Magic Cups", link: "/gifts-items#magiccups" },
+      { name: "Photo Specific Gift Items", link: "/gifts-items#photoframes" },
+    ],
+  },
+  { name: "Contact", link: "/contact" },
+];
+
+const path = Astro.url.pathname;
+---
+
+<nav
+  class="w-full sticky top-0 z-40
+    bg-gradient-to-b from-[#FBF7F2] via-[#F5EFE0] to-[#E8D5B5]
+    text-[#1a1a1a]
+    border-b-2 border-[#E8D5B5]
+    shadow-lg transition-all duration-300
+    hidden md:block"
+>
+  <div
+    class="max-w-7xl mx-auto flex justify-start items-center gap-6 px-4 py-0.5 md:px-4"
+  >
+    <!-- Logo - Left Side -->
+    <a
+      href="/"
+      class="flex items-center hover:scale-105 transition-all duration-300"
+    >
+      <img 
+        src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png" 
+        alt="Ram Photo Studio" 
+        class="h-12 w-auto md:h-14 drop-shadow-md"
+      />
+    </a>
+
+    <!-- Desktop Menu - Evenly Distributed -->
+    <ul class="flex items-center justify-evenly flex-1 space-x-4">
+      {navItems.map((item, index) => {
+        const dropdownId = item.name.toLowerCase().replace(/\s+/g, "-");
+        
+        // Check if current page is active
+        // For home page ("/"), use exact match; for others, use startsWith
+        const isActive = item.link === "/" 
+          ? path === "/" 
+          : path.startsWith(item.link) && item.link !== "#";
+
+        return (
+          <li class="group relative" data-nav-item={index}>
+            <div class="flex items-center gap-1">
+              <a
+                href={item.link}
+                class={`text-lg font-semibold transition-all duration-300 text-[#1a1a1a] relative inline-block
+                hover:scale-110 hover:text-[#8B6F47] hover:drop-shadow-[0_0_8px_rgba(139,111,71,0.6)]
+                ${isActive ? "scale-110 text-[#8B6F47]" : ""}
+              `}
+              >
+                {item.name}
+                <span
+                  class={`absolute bottom-0 left-0 h-0.5 bg-[#8B6F47] transition-all duration-300 ease-out
+                  ${isActive ? "w-full animate-pulse" : "w-0 group-hover:w-full"}
+                `}
+                ></span>
+              </a>
+
+              {item.items && (
+                <button
+                  class={`
+                    text-sm ml-1 p-1 rounded
+                    group-hover:rotate-180 group-hover:scale-125 group-hover:text-[#8B6F47]
+                    transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8B6F47]
+                    ${isActive ? "text-[#8B6F47]" : "text-[#1a1a1a]"}
+                  `}
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-label={`Toggle ${item.name} submenu`}
+                  data-dropdown-btn={index}
+                >
+                  ▼
+                </button>
+              )}
+            </div>
+
+            <!-- Dropdown - Shows on hover and keyboard focus -->
+            {item.items && (
+              <ul
+                id={dropdownId}
+                class="
+                  dropdown absolute left-0 mt-2 w-56
+                  bg-gradient-to-b from-[#FBF7F2] to-[#F5EFE0]
+                  border-2 border-[#E8D5B5]
+                  rounded-lg shadow-2xl py-2
+                  opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                  translate-y-2 group-hover:translate-y-0 scale-95 group-hover:scale-100
+                  transition-all duration-300 z-50
+                  overflow-hidden
+                "
+                role="menu"
+                data-dropdown-menu={index}
+              >
+                {item.items.map((sub, subIndex) => (
+                  <li class="px-2" role="none">
+                    <a
+                      href={sub.link}
+                      class="
+                        block px-2 py-2.5 rounded
+                        text-[#1a1a1a] font-medium
+                        hover:bg-[#8B6F47]/20 hover:text-[#8B6F47] hover:pl-4
+                        focus:bg-[#8B6F47]/20 focus:text-[#8B6F47] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8B6F47]
+                        transition-all duration-300
+                      "
+                      role="menuitem"
+                      data-dropdown-item={`${index}-${subIndex}`}
+                    >
+                      {sub.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</nav>
+
+<!-- Keyboard Navigation Script for Desktop -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownBtns = document.querySelectorAll('[data-dropdown-btn]');
+    const dropdownMenus = document.querySelectorAll('[data-dropdown-menu]');
+    let currentOpenDropdown = null;
+
+    // Toggle dropdown with keyboard
+    dropdownBtns.forEach((btn) => {
+      const index = btn.getAttribute('data-dropdown-btn');
+      const menu = document.querySelector(`[data-dropdown-menu="${index}"]`);
+      const navItem = document.querySelector(`[data-nav-item="${index}"]`);
+
+      // Click/Enter/Space to toggle
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleDropdown(index, btn, menu, navItem);
+      });
+
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleDropdown(index, btn, menu, navItem);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          openDropdown(index, btn, menu, navItem);
+          // Focus first item
+          const firstItem = menu.querySelector('[data-dropdown-item]');
+          if (firstItem) firstItem.focus();
+        } else if (e.key === 'Escape') {
+          closeDropdown(index, btn, menu, navItem);
+        }
+      });
+    });
+
+    // Arrow key navigation within dropdown
+    dropdownMenus.forEach((menu) => {
+      const items = menu.querySelectorAll('[data-dropdown-item]');
+      
+      items.forEach((item, itemIndex) => {
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextItem = items[itemIndex + 1];
+            if (nextItem) nextItem.focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevItem = items[itemIndex - 1];
+            if (prevItem) {
+              prevItem.focus();
+            } else {
+              // Go back to dropdown button
+              const index = menu.getAttribute('data-dropdown-menu');
+              const btn = document.querySelector(`[data-dropdown-btn="${index}"]`);
+              if (btn) btn.focus();
+            }
+          } else if (e.key === 'Escape') {
+            const index = menu.getAttribute('data-dropdown-menu');
+            const btn = document.querySelector(`[data-dropdown-btn="${index}"]`);
+            const navItem = document.querySelector(`[data-nav-item="${index}"]`);
+            closeDropdown(index, btn, menu, navItem);
+            if (btn) btn.focus();
+          }
+        });
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (currentOpenDropdown !== null) {
+        const navItem = document.querySelector(`[data-nav-item="${currentOpenDropdown}"]`);
+        if (navItem && !navItem.contains(e.target)) {
+          const btn = document.querySelector(`[data-dropdown-btn="${currentOpenDropdown}"]`);
+          const menu = document.querySelector(`[data-dropdown-menu="${currentOpenDropdown}"]`);
+          closeDropdown(currentOpenDropdown, btn, menu, navItem);
+        }
+      }
+    });
+
+    function toggleDropdown(index, btn, menu, navItem) {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      
+      if (isOpen) {
+        closeDropdown(index, btn, menu, navItem);
+      } else {
+        openDropdown(index, btn, menu, navItem);
+      }
+    }
+
+    function openDropdown(index, btn, menu, navItem) {
+      // Close any other open dropdown
+      if (currentOpenDropdown !== null && currentOpenDropdown !== index) {
+        const oldBtn = document.querySelector(`[data-dropdown-btn="${currentOpenDropdown}"]`);
+        const oldMenu = document.querySelector(`[data-dropdown-menu="${currentOpenDropdown}"]`);
+        const oldNavItem = document.querySelector(`[data-nav-item="${currentOpenDropdown}"]`);
+        closeDropdown(currentOpenDropdown, oldBtn, oldMenu, oldNavItem);
+      }
+
+      btn.setAttribute('aria-expanded', 'true');
+      menu.classList.remove('opacity-0', 'invisible', 'translate-y-2', 'scale-95');
+      menu.classList.add('opacity-100', 'visible', 'translate-y-0', 'scale-100');
+      currentOpenDropdown = index;
+    }
+
+    function closeDropdown(index, btn, menu, navItem) {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('opacity-100', 'visible', 'translate-y-0', 'scale-100');
+      menu.classList.add('opacity-0', 'invisible', 'translate-y-2', 'scale-95');
+      if (currentOpenDropdown === index) {
+        currentOpenDropdown = null;
+      }
+    }
+  });
+</script>
+
+<!-- Mobile Navbar - Always visible on mobile -->
+<nav
+  class="md:hidden sticky top-0 z-40 bg-gradient-to-b from-[#FBF7F2] via-[#F5EFE0] to-[#E8D5B5] border-b-2 border-[#E8D5B5] shadow-lg"
+>
+  <div class="flex justify-between items-center px-4 py-0.5">
+    <!-- Studio Logo - Left -->
+    <a
+      href="/"
+      class="flex items-center hover:scale-105 transition-all duration-300"
+    >
+      <img 
+        src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png" 
+        alt="Ram Photo Studio" 
+        class="h-14 w-auto drop-shadow-md"
+      />
+    </a>
+
+    <!-- Hamburger Button - Right -->
+    <button
+      id="mobileMenuBtn"
+      class="p-2 rounded-lg hover:bg-[#8B6F47]/20 hover:scale-110 transition-all duration-300"
+      aria-label="Toggle menu"
+    >
+      <div class="hamburger w-5 h-4 flex flex-col justify-between">
+        <span
+          class="hamburger-line block h-[2px] w-full bg-[#1a1a1a] transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line block h-[2px] w-full bg-[#1a1a1a] transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line block h-[2px] w-full bg-[#1a1a1a] transition-all duration-300"
+        ></span>
+      </div>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div
+  id="mobileMenu"
+  class="fixed inset-y-0 right-0 w-3/5 max-w-xs
+    translate-x-full
+    md:hidden
+    bg-gradient-to-b from-[#FBF7F2] via-[#F5EFE0] to-[#E8D5B5] backdrop-blur-xl
+    px-6 pb-6 pt-4 space-y-2
+    border-l-2 border-[#D4AF37]
+    shadow-2xl transition-transform duration-300
+    overflow-y-auto z-50"
+  style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);"
+>
+  <!-- Close Button -->
+  <div class="flex justify-end mb-4">
+    <button
+      id="closeMobileMenu"
+      class="p-2 rounded-lg hover:bg-[#D4AF37]/20 transition-all duration-300 text-[#1a1a1a]"
+      aria-label="Close menu"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  {navItems.map((item, index) =>
+    item.items ? (
+      <div class="border-b border-[#D4AF37]/30 pb-2" data-menu-item={index}>
+        <!-- Clickable heading + dropdown arrow -->
+        <div class="flex items-center justify-between py-2">
+          <a
+            href={item.link}
+            class="mobile-menu-link flex-1 text-base font-medium text-[#1a1a1a] hover:text-[#8B6F47] transition"
+          >
+            {item.name}
+          </a>
+          <button
+            class="dropdown-toggle p-2 text-[#1a1a1a] hover:text-[#8B6F47] transition-all duration-300"
+            data-dropdown={index}
+            aria-label={`Toggle ${item.name} submenu`}
+          >
+            <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Dropdown content -->
+        <div class="dropdown-content hidden ml-3 mt-1 space-y-1" data-dropdown-content={index}>
+          {item.items.map((sub) => (
+            <a
+              href={sub.link}
+              class="mobile-menu-link block py-1.5 text-sm text-[#3A3A3A] hover:text-[#8B6F47] transition"
+            >
+              {sub.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <a
+        href={item.link}
+        class="mobile-menu-link block py-2 text-base font-medium border-b border-[#D4AF37]/30 text-[#1a1a1a] hover:text-[#8B6F47] transition"
+      >
+        {item.name}
+      </a>
+    )
+  )}
+
+  <div class="pt-4"></div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div
+  id="mobileMenuOverlay"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40 md:hidden"
+></div>
+
+<script is:inline>
+  const btn = document.getElementById("mobileMenuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const overlay = document.getElementById("mobileMenuOverlay");
+  const closeBtn = document.getElementById("closeMobileMenu");
+  const hamburgerLines = btn.querySelectorAll(".hamburger-line");
+  const menuLinks = document.querySelectorAll(".mobile-menu-link");
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+  function closeMenu() {
+    mobileMenu.classList.remove("translate-x-0");
+    mobileMenu.classList.add("translate-x-full");
+    overlay.classList.remove("opacity-100", "visible");
+    overlay.classList.add("opacity-0", "invisible");
+
+    // Animate back to hamburger
+    hamburgerLines[0].style.transform =
+      "rotate(0) translateY(0) translateX(0)";
+    hamburgerLines[1].style.opacity = "1";
+    hamburgerLines[2].style.transform =
+      "rotate(0) translateY(0) translateX(0)";
+    
+    // Close all dropdowns when menu closes
+    closeAllDropdowns();
+  }
+
+  function openMenu() {
+    mobileMenu.classList.remove("translate-x-full");
+    mobileMenu.classList.add("translate-x-0");
+    overlay.classList.remove("opacity-0", "invisible");
+    overlay.classList.add("opacity-100", "visible");
+
+    // Animate to cross (X)
+    hamburgerLines[0].style.transform =
+      "rotate(45deg) translateY(4px) translateX(4px)";
+    hamburgerLines[1].style.opacity = "0";
+    hamburgerLines[2].style.transform =
+      "rotate(-45deg) translateY(-4px) translateX(4px)";
+  }
+
+  function closeAllDropdowns() {
+    const allDropdowns = document.querySelectorAll(".dropdown-content");
+    const allToggles = document.querySelectorAll(".dropdown-toggle svg");
+    
+    allDropdowns.forEach((dropdown) => {
+      dropdown.classList.add("hidden");
+    });
+    
+    allToggles.forEach((svg) => {
+      svg.classList.remove("rotate-180");
+    });
+  }
+
+  function toggleDropdown(index) {
+    const dropdown = document.querySelector(`[data-dropdown-content="${index}"]`);
+    const toggle = document.querySelector(`[data-dropdown="${index}"] svg`);
+    const isOpen = !dropdown.classList.contains("hidden");
+
+    // Close all other dropdowns first (accordion behavior)
+    closeAllDropdowns();
+
+    // If this dropdown was closed, open it
+    if (!isOpen) {
+      dropdown.classList.remove("hidden");
+      toggle.classList.add("rotate-180");
+    }
+  }
+
+  // Hamburger button click
+  btn.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.contains("translate-x-0");
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close button click
+  closeBtn.addEventListener("click", closeMenu);
+
+  // Overlay click to close
+  overlay.addEventListener("click", closeMenu);
+
+  // Close menu when clicking any menu link
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Dropdown toggle buttons
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const index = toggle.getAttribute("data-dropdown");
+      toggleDropdown(index);
+    });
+  });
+</script>

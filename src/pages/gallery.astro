@@ -1,0 +1,1270 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+
+// Still Photography - 12 images with categories
+const stillPhotography = [
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219656/DSC00272_dcse7a.jpg", category: "Product Photoshoot" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466656/1D0A0153_1_rigwk7.jpg", category: "Wedding Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219334/Photo-64_ndnunh.jpg", category: "Wedding Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219337/Photo-83_nng9hq.jpg", category: "Outdoor Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768855025/Photo-71_sdyj99.jpg", category: "Wedding Portrait" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219343/Photo-25_biaonr.jpg", category: "Candid Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768220095/1D0A7213_v51yx6.jpg", category: "Couple Photoshoot" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219385/Photo-12_cibe2n.jpg", category: "Studio Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768220065/Photo-76_ovrnxf.jpg", category: "Bridal Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219649/DSC00250_dcjhoa.jpg", category: "Product Photoshoot" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768855571/1D0A9943_2_hfgftj.jpg", category: "Bridal Portrait" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768219359/Photo-56_ng129s.jpg", category: "Bridal Photography" },
+];
+
+// Videography - 4 videos
+const videography = [
+  {
+    src: "https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306777/Reel_2_1_nhtdwt.mp4",
+    category: "Cinematic Wedding Film",
+    poster:
+      "https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306777/Reel_2_1_nhtdwt.jpg",
+  },
+  {
+    src: "https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306781/Teaser----_1_zvby6x.mp4",
+    category: "Wedding Teaser",
+    poster:
+      "https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306781/Teaser----_1_zvby6x.jpg",
+  },
+  {
+    src: "https://res.cloudinary.com/djrs9oqz7/video/upload/v1769170670/Tesar_compressed_scrnpo.mp4",
+    category: "Professional Editing",
+    poster:
+      "https://res.cloudinary.com/djrs9oqz7/video/upload/v1769170670/Tesar_compressed_scrnpo.jpg",
+  },
+  {
+    src: "https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306783/drone_vid_krb095.mov",
+    category: "Drone Coverage",
+    poster:
+      "https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306783/drone_vid_krb095.jpg",
+  },
+];
+
+// Printing Solutions - 12 images
+const printingSolutions = [
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309128/WhatsApp_Image_2025-12-28_at_3_04_37_PM-Picsart-AiImageEnhancer_prbeew.png", category: "Large Format Printing" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309144/Canon_TM5300_ncdo3b.jpg", category: "Photo Prints" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309114/WhatsApp_Image_2025-12-28_at_3.04.36_PM_r2bkmo.jpg", category: "Canvas Prints" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309137/EpSON_P8000_gxj5e0.jpg", category: "Poster Printing" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309134/Canon_TM_5300_kspa5s.webp", category: "Banner Printing" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309141/cameo_5_isfmcy.jpg", category: "Silhoutte printer" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768309148/Canon_TM5300_1_uo8dba.jpg", category: "Canon L36" },
+];
+
+// Gift Items - 12 images
+const giftItems = [
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308543/customised-gift-items_caksjd.jpg", category: "Sublimation Gifts" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308523/GL19113_1-Picsart-AiImageEnhancer_qbbnuh.png", category: "Photo Cushions" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308541/Unique-gifts-Home-decor-gift-ideas-A-polyresin-lamp-featuring-a-tree-and-deer-printed-pattern-1024x585_1_qdxtdj.webp", category: "LED Items" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308531/3up-winter-drinkware-oct2024-dsk-880x586_jhx6gx.jpg", category: "Magic Cups" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308498/il_570xN.2993883512_bt4r_nql5yh.webp", category: "Photo Frames" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308546/customised-gift-items_kjg01e.jpg", category: "Personalized Gifts" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308490/oye-personalized-temprature-water-bottle_qztjx5.jpg", category: "Custom Prints" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308502/3D-Engraved-Crystal_x9u05z.jpg", category: "Custom Photo Gifts" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308492/62c8482a69604_jft3-_oli7ll.webp", category: "Memory Gifts" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308534/best-gifts-for-wife_ffbois.jpg", category: "Photo Calendars" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308496/heartsnapshotmixphotoart_pflsao.webp", category: "Decorative Items" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308555/020-3-options-for-installing-led_iwtnbm.jpg", category: "LED Walls" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1770298743/rise_shine_mugs_rnaftl.jpg",  category: "Magic Cups" },
+];
+
+// Baby Photoshoot - 12 images
+const babyPhotoshoot = [
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414328/3-months-Baby-Photoshoot-Amrit-Ammu-Photography-Thane-Mumbai-1_1_phmoyo.webp", category: "Newborn Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414336/DSC_1001_1_ipkugr.jpg", category: "Baby Milestone" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414344/8x12---_2_hr2wx8.jpg", category: "Infant Portraits" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414373/DSC_0981_1_fpp6z6.jpg", category: "Baby Studio Session" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414361/1D0A8260_1_olpcva.jpg", category: "Cute Baby Moments" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414349/8x12---_1_wtlqsz.jpg", category: "Baby Props Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414372/DSC_1007_1_hr5apq.jpg", category: "Family with Baby" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414340/DSC_0991_1_xrgfze.jpg", category: "Baby Portraits" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414367/1D0A2148_mwe4pv.jpg", category: "Baby Photoshoot" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414334/5x7-_2_f3glwb.jpg", category: "Studio Session" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414357/1D0A8271_yplet2.jpg", category: "Baby Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414339/baby_photographer_in_Pune_066937_1_njvfbw.jpg", category: "Infant Studio" },
+];
+
+// Matrimonial Photoshoot - 8 images
+const matrimonialPhotoshoot = [
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414302/001_copy_ga0blj.jpg", category: "Matrimonial Profile" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414319/DSC_9705_zlztup.jpg", category: "Bio-Data Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414313/03_copy_hiei3u.jpg", category: "Studio Session" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414305/DSC_1077_1_j4stpt.jpg", category: "Professional Headshot" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414286/04_copy_alghgq.jpg", category: "Formal Studio" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414318/002_copy_kdnzua.jpg", category: "Marriage Photography" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414280/2_1_qduxlv.jpg", category: "Elegant Bridal Portrait" },
+  { src: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414296/01_copy_nedpcy.jpg", category: "Classic Studio Shot" },
+]; 
+---
+
+<BaseLayout>
+  <!-- Content -->
+  <div class="relative overflow-x-hidden overflow-y-visible">
+    <!-- Hero Section -->
+    <section class="relative text-center space-y-2 md:space-y-4 mb-4 pt-16">
+      <!-- Watermark Logo -->
+      <div
+        class="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none"
+      >
+        <img
+          src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png"
+          alt="Ram Photo Studio Watermark"
+          class="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-[0.20] object-contain"
+        />
+      </div>
+
+      <!-- Hero content -->
+      <div class="relative z-10">
+        <p class="uppercase tracking-[0.3em] text-sm text-[#D97706]">
+          Our Work
+        </p>
+        <h1 class="text-3xl md:text-4xl font-semibold">Gallery</h1>
+        <p class="text-[#1a1a1a] dark:text-[#CDC3B7] max-w-3xl mx-auto">
+          Explore our portfolio showcasing stunning photography, cinematic
+          videography, premium printing solutions, and personalized gift items.
+        </p>
+      </div>
+    </section>
+
+    <!-- Still Photography Section -->
+    <section class="mb-16 mt-16" id="still">
+      <div class="mb-6">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-[#1a1a1a] dark:text-white mb-2"
+        >
+          Still Photography
+        </h2>
+        <p class="text-[#f97316] text-lg font-bold">
+          Capturing timeless moments with precision and artistry
+        </p>
+      </div>
+      <div class="slider-container" data-slider="still">
+        <div class="slider-track">
+          {
+            stillPhotography.concat(stillPhotography).map((item) => (
+              <div class="slider-item">
+                <img src={item.src} alt={item.category} />
+                <div class="slider-overlay">
+                  <span class="slider-category">{item.category}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Baby Photoshoot Section -->
+    <section class="mb-16" id="baby">
+      <div class="mb-6">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-[#1a1a1a] dark:text-white mb-2"
+        >
+          Baby Photoshoot
+        </h2>
+        <p class="text-[#f97316] text-lg font-bold">
+          Specialized setup for newborns and infants
+        </p>
+      </div>
+      <div class="slider-container" data-slider="baby">
+        <div class="slider-track">
+          {
+            babyPhotoshoot.concat(babyPhotoshoot).map((item) => (
+              <div class="slider-item">
+                <img src={item.src} alt={item.category} />
+                <div class="slider-overlay">
+                  <span class="slider-category">{item.category}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Matrimonial Photoshoot Section -->
+    <section class="mb-16" id="matrimonial">
+      <div class="mb-6">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-[#1a1a1a] dark:text-white mb-2"
+        >
+          Matrimonial Photoshoot
+        </h2>
+        <p class="text-[#f97316] text-lg font-bold">
+          Clean, confident, and approachable portraits
+        </p>
+      </div>
+      <div class="slider-container" data-slider="matrimonial">
+        <div class="slider-track">
+          {
+            matrimonialPhotoshoot.concat(matrimonialPhotoshoot).map((item) => (
+              <div class="slider-item">
+                <img src={item.src} alt={item.category} />
+                <div class="slider-overlay">
+                  <span class="slider-category">{item.category}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Videography Section -->
+    <section class="mb-16" id="video">
+      <div class="mb-6">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-[#1a1a1a] dark:text-white mb-2"
+        >
+          Videography
+        </h2>
+        <p class="text-[#f97316] text-lg font-bold">
+          Cinematic storytelling that brings your memories to life
+        </p>
+      </div>
+      <div class="slider-container" data-slider="video">
+        <div class="slider-track video-track">
+          {
+            /* Quadruple the items to ensure smooth infinite scroll without gaps */
+            videography.concat(videography).concat(videography).concat(videography).map((item) => (
+              <div class="slider-item video-item">
+                <video poster={item.poster} loop playsinline>
+                  <source src={item.src} type="video/mp4" />
+                </video>
+                <!-- Play/Pause button overlay -->
+                <div class="play-button-overlay">
+                  <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="64" height="64">
+                    <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.6)" stroke="white" stroke-width="1"/>
+                    <path d="M9.5 8.5l7 3.5-7 3.5z"/>
+                  </svg>
+                  <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="64" height="64" style="display: none;">
+                    <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.6)" stroke="white" stroke-width="1"/>
+                    <rect x="9" y="8" width="2" height="8" fill="white"/>
+                    <rect x="13" y="8" width="2" height="8" fill="white"/>
+                  </svg>
+                </div>
+                <div class="slider-overlay">
+                  <span class="slider-category">{item.category}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Printing Solutions Section -->
+    <section class="mb-16" id="printing">
+      <div class="mb-6">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-[#1a1a1a] dark:text-white mb-2"
+        >
+          Printing Solutions
+        </h2>
+        <p class="text-[#f97316] text-lg font-bold">
+          Professional printing services for all your needs
+        </p>
+      </div>
+      <div class="slider-container" data-slider="printing">
+        <div class="slider-track">
+          {
+            printingSolutions.concat(printingSolutions).map((item) => (
+              <div class="slider-item">
+                <img src={item.src} alt={item.category} />
+                <div class="slider-overlay">
+                  <span class="slider-category">{item.category}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Gift Items Section -->
+    <section class="mb-16" id="gifts">
+      <div class="mb-6">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-[#1a1a1a] dark:text-white mb-2"
+        >
+          Gift Items
+        </h2>
+        <p class="text-[#f97316] text-lg font-bold">
+          Personalized gifts that celebrate your special moments
+        </p>
+      </div>
+      <div class="slider-container" data-slider="gifts">
+        <div class="slider-track">
+          {
+            giftItems.concat(giftItems).map((item) => (
+              <div class="slider-item">
+                <img src={item.src} alt={item.category} />
+                <div class="slider-overlay">
+                  <span class="slider-category">{item.category}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+      <button class="video-modal-close" aria-label="Close video">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <video id="modalVideo" controls playsinline webkit-playsinline>
+        <source src="" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-content">
+      <button class="image-modal-close" aria-label="Close image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img id="modalImage" src="" alt="Full size image" />
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <CTASection />
+</BaseLayout>
+
+<style>
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Add scroll padding to account for navbar height */
+  section[id] {
+    scroll-margin-top: 130px;
+  }
+
+  .slider-container {
+    overflow-x: hidden; /* Hide horizontal overflow from animation */
+    overflow-y: visible; /* Allow vertical expansion for hover */
+    position: relative;
+    width: 100%;
+    padding: 3rem 0; /* Vertical padding to reserve space for hover expansion */
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 1rem;
+    animation: scroll 40s linear infinite;
+    animation-play-state: paused; /* Paused by default */
+    will-change: transform;
+  }
+
+  /* Start animation after page loads */
+  .slider-track.animate {
+    animation-play-state: running;
+  }
+
+  .slider-track:hover {
+    animation-play-state: paused;
+  }
+
+  .slider-item {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: visible; /* Allow hover expansion */
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform-origin: center center; /* Scale from center */
+    z-index: 1; /* Base z-index for stacking */
+  }
+
+  /* Video items use landscape aspect ratio (16:9) */
+  .slider-item.video-item {
+    width: 35rem;     /* 560px based on 16px font size */
+    height: 19.6875rem; /* 315px */
+  }
+
+  /* When the user hovers over the track, add a VERY subtle blur to others */
+  .slider-track:hover .slider-item {
+    filter: blur(2px) opacity(0.8);
+    transform: scale(0.98);
+  }
+
+  /* The active item pops out cleanly - translate FIRST, then scale */
+  .slider-item:hover {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: translateY(-20px) scale(1.1) !important; /* Translate first, then scale */
+    z-index: 50; /* Raise above all other items */
+    box-shadow:
+      0 20px 40px -10px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .slider-item img,
+  .slider-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.75rem;
+  }
+
+  .slider-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .slider-item:hover .slider-overlay {
+    opacity: 1;
+  }
+
+  .slider-category {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Play button overlay for videos */
+  .play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    z-index: 10;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .play-button-overlay:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  /* Hide play/pause button when video is playing and not hovering */
+  .video-item.playing .play-button-overlay {
+    opacity: 0;
+  }
+
+  .video-item.playing:hover .play-button-overlay {
+    opacity: 1;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-300px * 12 - 12rem));
+    }
+  }
+
+  /* Video specific styles */
+  .video-item video {
+    pointer-events: none;
+  }
+
+  .slider-item:hover video {
+    pointer-events: auto;
+  }
+
+  /* Video Modal Base Styles */
+  .video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .video-modal.active {
+    display: flex;
+  }
+
+  .video-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-modal-content video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .video-modal-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .video-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+
+  /* Image Modal Base Styles */
+  .image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .image-modal.active {
+    display: flex;
+  }
+
+  .image-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-modal-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+  }
+
+  .image-modal-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .image-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .slider-container {
+      padding: 2rem 0; /* Adjust padding for mobile */
+    }
+
+    .slider-item {
+      width: 280px; /* Increased from 250px */
+      height: 400px; /* Increased from 350px */
+    }
+
+    .slider-item.video-item {
+      width: 17.5rem;    /* 280px based on 16px font size */
+      height: 9.875rem;  /* 158px */
+    }
+
+    .slider-item:hover {
+      transform: translateY(-15px) scale(1.08) !important; /* Slightly less expansion on mobile */
+    }
+
+    /* Mobile focused state using a Clone approach */
+    /* We don't change the original item's position because parent transform breaks fixed positioning */
+    .slider-item.mobile-hidden {
+      opacity: 0 !important;
+    }
+
+    /* Styles for the cloned item injected into body */
+    :global(.cloned-slider-item) {
+      position: fixed;
+      z-index: 10000;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+    }
+
+    :global(.cloned-slider-item img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    :global(.cloned-slider-item .slider-overlay) {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      opacity: 1 !important;
+    }
+
+    :global(.cloned-slider-item .slider-category) {
+      color: white;
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    :global(.mobile-clone-backdrop) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(4px);
+      pointer-events: none; /* Crucial fix: don't block clicks when hidden */
+    }
+
+    :global(.mobile-clone-backdrop.active) {
+      opacity: 1;
+      pointer-events: auto; /* Enable clicks only when visible */
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-280px * 12 - 12rem));
+      }
+    }
+
+    /* Make video items obviously clickable on mobile */
+    .slider-item.video-item {
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-280px * 12 - 12rem));
+      }
+    }
+
+    /* Make video items obviously clickable on mobile */
+    .slider-item.video-item {
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-280px * 12 - 12rem));
+      }
+    }
+
+    /* Make video items obviously clickable on mobile */
+    .slider-item.video-item {
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Video Modal - Mobile Portrait */
+    .video-modal {
+      padding: 0.5rem;
+    }
+
+    .video-modal-content {
+      max-width: 98vw;
+      max-height: 85vh;
+    }
+
+    .video-modal-content video {
+      max-height: 85vh;
+      max-width: 98vw;
+    }
+
+    .video-modal-close {
+      top: -2.5rem;
+      width: 44px;
+      height: 44px;
+    }
+
+    /* Image Modal - Mobile */
+    .image-modal {
+      padding: 1rem;
+    }
+
+    .image-modal-content {
+      max-width: 95vw;
+      max-height: 85vh;
+    }
+
+    .image-modal-content img {
+      max-height: 85vh;
+    }
+
+    .image-modal-close {
+      top: -2.5rem;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* Mobile Landscape Mode - Video Full Screen */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .video-modal {
+      padding: 0;
+    }
+
+    .video-modal-content {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .video-modal-content video {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+    }
+
+    .video-modal-close {
+      top: 0.75rem;
+      right: 0.75rem;
+      position: fixed;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.8);
+      border-color: rgba(255, 255, 255, 0.6);
+      width: 44px;
+      height: 44px;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Video track specific scroll animation for mobile */
+    .video-track {
+      animation-name: scroll-video-mobile;
+    }
+
+    @keyframes scroll-video-mobile {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* Mobile: (280px item + 16px gap) * 4 items */
+        transform: translateX(calc(-296px * 4));
+      }
+    }
+  }
+
+
+
+  .slider-item.video-item {
+    width: 35rem; /* 560px */
+    height: 19.6875rem; /* 315px (16:9 aspect ratio) */
+  }
+
+  /* Desktop Video Track Animation */
+  .video-track {
+    animation-name: scroll-video;
+  }
+
+  @keyframes scroll-video {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Desktop: (35rem item + 1rem gap) * 4 items = 144rem */
+      transform: translateX(-144rem);
+    }
+  }
+
+  /* Mobile Responsive Updates */
+  @media (max-width: 768px) {
+    .slider-item.video-item {
+      width: 17.5rem; /* 280px */
+      height: 9.875rem; /* 158px */
+    }
+
+    @keyframes scroll-video-mobile {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* Mobile: (17.5rem item + 1rem gap) * 4 items = 74rem */
+        transform: translateX(-74rem);
+      }
+    }
+  }
+</style>
+
+<script>
+  // Video Modal Functionality
+  const videoModal = document.getElementById('videoModal') as HTMLElement;
+  const modalVideo = document.getElementById('modalVideo') as HTMLVideoElement;
+  const modalClose = document.querySelector('.video-modal-close') as HTMLElement;
+
+  // Track if video was playing when modal closes
+  let wasVideoPlaying = false;
+
+  // Detect if device is mobile
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+  // Open video in modal when clicked
+  document.querySelectorAll(".video-item").forEach((item) => {
+    const video = item.querySelector("video") as HTMLVideoElement;
+    const playButton = item.querySelector(".play-button-overlay") as HTMLElement;
+    const sliderTrack = item.closest(".slider-track") as HTMLElement;
+    
+    if (!video || !playButton) return;
+
+    // Function to open video modal
+    const openVideoModal = async (e: Event) => {
+      e.stopPropagation();
+      
+      // Get video source
+      const videoSource = video.querySelector('source')?.src;
+      if (videoSource) {
+        // Pause slider animation
+        if (sliderTrack) {
+          sliderTrack.style.animationPlayState = 'paused';
+        }
+
+        // Set modal video source
+        const modalSource = modalVideo.querySelector('source') as HTMLSourceElement;
+        if (modalSource) {
+          modalSource.src = videoSource;
+          modalVideo.load();
+        }
+        
+        // Show modal
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        // Wait for video to be ready and play
+        try {
+          await modalVideo.play();
+          wasVideoPlaying = true;
+        } catch (error) {
+          wasVideoPlaying = false;
+        }
+      }
+    };
+
+    // On mobile, clicking anywhere on video item opens modal
+    if (isMobile) {
+      item.addEventListener("click", openVideoModal);
+    } else {
+      // On desktop, only play button opens modal
+      playButton.addEventListener("click", openVideoModal);
+    }
+  });
+
+  // Close modal function
+  function closeVideoModal() {
+    // Pause video
+    modalVideo.pause();
+    modalVideo.currentTime = 0;
+    
+    // Hide modal
+    videoModal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+    
+    // Always resume all slider animations when closing
+    document.querySelectorAll('.slider-track').forEach(track => {
+      (track as HTMLElement).style.animationPlayState = 'running';
+    });
+    
+    wasVideoPlaying = false;
+  }
+
+  // Close button click
+  if (modalClose) {
+    modalClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeVideoModal();
+    });
+  }
+
+  // Close on backdrop click
+  videoModal?.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      closeVideoModal();
+    }
+  });
+
+  // Image Modal Functionality
+  const imageModal = document.getElementById('imageModal') as HTMLElement;
+  const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+  const imageModalClose = document.querySelector('.image-modal-close') as HTMLElement;
+
+  // Track active clone and original item
+  let activeClone: HTMLElement | null = null;
+  let originalItemRef: HTMLElement | null = null;
+  let backdropRef: HTMLElement | null = null;
+
+  // Open image in modal when clicked (only for non-video slider items)
+  const sliderItems = document.querySelectorAll(".slider-item:not(.video-item)");
+  
+  sliderItems.forEach((item, index) => {
+    const img = item.querySelector("img") as HTMLImageElement;
+    const sliderItem = item as HTMLElement;
+    
+    if (!img) return;
+
+    // Make image clickable
+    img.style.cursor = 'pointer';
+    sliderItem.style.cursor = 'pointer';
+
+    // Handle image click/touch
+    const handleImageClick = (e: Event) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Check if we're on mobile
+      const isMobileView = window.innerWidth <= 768;
+      
+      if (isMobileView) {
+        // MOBILE BEHAVIOR: Clone and center
+        
+        // If clicking the original item but a clone is active (shouldn't happen if overlay works, but safe check)
+        if (activeClone) {
+          closeMobileFocus();
+          return;
+        }
+
+        openMobileFocus(sliderItem);
+        
+      } else {
+        // DESKTOP BEHAVIOR
+        const imageSrc = img.src;
+        if (imageSrc) {
+          modalImage.src = imageSrc;
+          modalImage.alt = img.alt || 'Full size image';
+          imageModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    };
+
+    // Add event listeners
+    sliderItem.addEventListener("click", handleImageClick, { capture: true });
+    sliderItem.addEventListener("touchend", handleImageClick, { capture: true, passive: false });
+  });
+
+  // Function to open mobile focus (Clone Strategy)
+  function openMobileFocus(item: HTMLElement) {
+    
+    // 1. Create backdrop if not exists
+    if (!backdropRef) {
+      backdropRef = document.createElement('div');
+      backdropRef.className = 'mobile-clone-backdrop';
+      document.body.appendChild(backdropRef);
+      // Close on backdrop click
+      backdropRef.addEventListener('click', closeMobileFocus);
+    }
+
+    // 2. Get position of original item
+    const rect = item.getBoundingClientRect();
+    originalItemRef = item;
+
+    // 3. Clone the item shallowly first to avoid deep nesting issues if complex
+    // Actually deep clone is fine, but we need to reset styles
+    const clone = item.cloneNode(true) as HTMLElement;
+    
+    // RESET STYLES CRITICAL FOR VISIBILITY
+    clone.className = 'cloned-slider-item'; // Removed 'slider-item' to avoid inheriting scroll animation or unwanted hover effects
+    clone.style.position = 'fixed';
+    clone.style.top = `${rect.top}px`;
+    clone.style.left = `${rect.left}px`;
+    clone.style.width = `${rect.width}px`;
+    clone.style.height = `${rect.height}px`;
+    clone.style.margin = '0';
+    clone.style.transform = 'none';
+    clone.style.transition = 'none'; // No transition for initial placement
+    clone.style.zIndex = '10000';
+    clone.style.opacity = '1';
+    clone.style.visibility = 'visible';
+    clone.style.display = 'block';
+    
+    // Explicitly set image size
+    const img = clone.querySelector('img');
+    if (img) {
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '0.75rem';
+    }
+    
+    // Ensure overlay is visible
+    const overlay = clone.querySelector('.slider-overlay') as HTMLElement;
+    if (overlay) {
+        overlay.style.opacity = '1';
+        overlay.style.display = 'flex';
+    }
+
+    // 4. Append to body
+    document.body.appendChild(clone);
+    activeClone = clone;
+
+    // 5. Handle original item and slider track
+    // Pause animation
+    const track = item.closest('.slider-track') as HTMLElement;
+    if (track) track.style.animationPlayState = 'paused';
+    
+    // Hide original visual (but keep space)
+    item.style.opacity = '0';
+
+    // 6. Trigger animation to center
+    // Force reflow
+    void clone.offsetHeight;
+    
+    // Enable transition for the move
+    clone.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+    requestAnimationFrame(() => {
+      // Show backdrop
+      if (backdropRef) backdropRef.classList.add('active');
+      
+      // Animate clone to center
+      const viewportW = window.innerWidth;
+      const viewportH = window.innerHeight;
+      
+      // Target dimensions (larger than original)
+      const targetW = Math.min(viewportW * 0.9, 340); // Max 90% width or 340px
+      const targetH = Math.min(viewportH * 0.8, 500); // Max 80% height or 500px
+      
+      // Calculate centered position
+      const targetTop = (viewportH - targetH) / 2;
+      const targetLeft = (viewportW - targetW) / 2;
+      
+      clone.style.top = `${targetTop}px`;
+      clone.style.left = `${targetLeft}px`;
+      clone.style.width = `${targetW}px`;
+      clone.style.height = `${targetH}px`;
+      clone.style.boxShadow = '0 30px 60px -15px rgba(0, 0, 0, 0.6)';
+    });
+
+    // Add click listener to clone to close it
+    activeClone.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileFocus();
+    });
+  }
+
+  // Function to close mobile focus
+  function closeMobileFocus() {
+    if (!activeClone || !originalItemRef) return;
+
+    // 1. Get current position of original item (in case user scrolled)
+    const rect = originalItemRef.getBoundingClientRect();
+
+    // 2. Animate clone back to original position
+    activeClone.style.top = `${rect.top}px`;
+    activeClone.style.left = `${rect.left}px`;
+    activeClone.style.width = `${rect.width}px`;
+    activeClone.style.height = `${rect.height}px`;
+    activeClone.style.boxShadow = 'none';
+
+    // 3. Hide backdrop
+    if (backdropRef) backdropRef.classList.remove('active');
+
+    // 4. After transition, cleanup
+    setTimeout(() => {
+      // Restore original
+      if (originalItemRef) {
+        originalItemRef.style.opacity = '';
+        const track = originalItemRef.closest('.slider-track') as HTMLElement;
+        if (track) track.style.animationPlayState = 'running';
+        originalItemRef = null;
+      }
+
+      // Remove clone
+      if (activeClone) {
+        activeClone.remove();
+        activeClone = null;
+      }
+    }, 400); // Match CSS transition time
+  }
+
+
+  // Close image modal function
+  function closeImageModal() {
+    imageModal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+    modalImage.src = '';
+  }
+
+  // Close button click
+  if (imageModalClose) {
+    imageModalClose.addEventListener('click', closeImageModal);
+  }
+
+  // Close on backdrop click
+  imageModal?.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+      closeImageModal();
+    }
+  });
+
+  // Close on Escape key (update to handle both modals and mobile focus)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      // Close mobile focused image
+      if (activeClone && window.innerWidth <= 768) {
+        closeMobileFocus();
+      }
+      
+      // Close modals
+      if (imageModal.classList.contains('active')) {
+        closeImageModal();
+      }
+      if (videoModal.classList.contains('active')) {
+        closeVideoModal();
+      }
+    }
+  });
+
+  // Handle hash navigation for anchor scrolling
+  function handleHashNavigation() {
+    const hash = window.location.hash;
+    if (hash) {
+      // Longer delay to let the page render completely when coming from another page
+      setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          const navbarHeight = 130;
+          const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Increased delay for cross-page navigation
+    }
+  }
+
+  // Handle hash on DOM ready (before images load)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleHashNavigation);
+  } else {
+    handleHashNavigation();
+  }
+
+  // Handle hash on page load (after everything loads)
+  window.addEventListener('load', () => {
+    handleHashNavigation();
+  });
+
+  // Handle hash changes (when clicking links)
+  window.addEventListener('hashchange', () => {
+    handleHashNavigation();
+  });
+
+  // Start slider animations after page load and layout is stable
+  function startSliderAnimations() {
+    // Wait longer for any anchor scrolling to complete
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        // Add 'animate' class to all slider tracks to start animations
+        document.querySelectorAll('.slider-track').forEach(track => {
+          track.classList.add('animate');
+        });
+      }, 1500); // Increased delay to 1.5 seconds to ensure scrolling completes
+    });
+  }
+
+  // Start animations after page is fully loaded
+  if (document.readyState === 'complete') {
+    startSliderAnimations();
+  } else {
+    window.addEventListener('load', startSliderAnimations);
+  }
+</script>

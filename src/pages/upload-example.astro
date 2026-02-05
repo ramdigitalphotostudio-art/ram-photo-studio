@@ -1,0 +1,218 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CloudinaryUpload from "../components/CloudinaryUpload.astro";
+---
+
+<BaseLayout title="Cloudinary Upload Test - Ram Photo Studio">
+    <div class="upload-page">
+        <div class="header">
+            <h1>🎨 Cloudinary Upload Test</h1>
+            <p>
+                Test your Cloudinary integration by uploading images and videos
+            </p>
+        </div>
+
+        <CloudinaryUpload />
+
+        <div class="info-section">
+            <h2>📋 How to Use</h2>
+            <ol>
+                <li>Click "Choose File" to select an image or video</li>
+                <li>Select the media type (Image or Video)</li>
+                <li>Click "Upload" button</li>
+                <li>Wait for the upload to complete</li>
+                <li>Your media will appear below with its Cloudinary URL</li>
+            </ol>
+
+            <div class="tips">
+                <h3>💡 Tips</h3>
+                <ul>
+                    <li>
+                        <strong>Supported Image Formats:</strong> JPG, PNG, GIF, WebP,
+                        AVIF, SVG
+                    </li>
+                    <li>
+                        <strong>Supported Video Formats:</strong> MP4, WebM, MOV,
+                        AVI
+                    </li>
+                    <li>
+                        <strong>Max File Size (Free Plan):</strong> 100MB per file
+                    </li>
+                    <li>
+                        <strong>Storage Limit (Free Plan):</strong> 25GB total
+                    </li>
+                    <li>
+                        <strong>Bandwidth (Free Plan):</strong> 25GB per month
+                    </li>
+                </ul>
+            </div>
+
+            <div class="next-steps">
+                <h3>🚀 Next Steps</h3>
+                <ul>
+                    <li>Upload some test images to verify everything works</li>
+                    <li>
+                        Check your <a
+                            href="https://cloudinary.com/console/media_library"
+                            target="_blank">Cloudinary Media Library</a>
+                    </li>
+                    <li>
+                        Organize your media into folders (gallery, events,
+                        portraits, etc.)
+                    </li>
+                    <li>Integrate uploads into your admin panel</li>
+                    <li>Use the Cloudinary URLs in your gallery pages</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>📚 Resources</h3>
+                <ul>
+                    <li>
+                        <a href="/CLOUDINARY_QUICKSTART.md" target="_blank"
+                            >Quick Start Guide (5 min)</a>
+                    </li>
+                    <li>
+                        <a href="/CLOUDINARY_COMPLETE_SETUP.md" target="_blank"
+                            >Complete Setup Guide</a>
+                    </li>
+                    <li>
+                        <a href="https://cloudinary.com/console" target="_blank"
+                            >Cloudinary Dashboard</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://cloudinary.com/documentation"
+                            target="_blank">Official Documentation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    .upload-page {
+        min-height: 100vh;
+        background: linear-gradient(
+            135deg,
+            #1e3c72 0%,
+            #2a5298 50%,
+            #7e22ce 100%
+        );
+        padding: 2rem 1rem;
+    }
+
+    .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+
+    .header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .info-section {
+        max-width: 900px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-section h2 {
+        color: #1e3c72;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .info-section h3 {
+        color: #2a5298;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .info-section ol,
+    .info-section ul {
+        margin-left: 1.5rem;
+        line-height: 1.8;
+    }
+
+    .info-section li {
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .tips {
+        background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-top: 2rem;
+        border-left: 4px solid #f97316;
+    }
+
+    .next-steps {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-top: 2rem;
+        border-left: 4px solid #0ea5e9;
+    }
+
+    .resources {
+        background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-top: 2rem;
+        border-left: 4px solid #8b5cf6;
+    }
+
+    .info-section a {
+        color: #7e22ce;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+
+    .info-section a:hover {
+        color: #6b21a8;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .info-section {
+            padding: 1.5rem;
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .info-section h3 {
+            font-size: 1.2rem;
+        }
+    }
+</style>

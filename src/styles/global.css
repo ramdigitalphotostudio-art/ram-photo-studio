@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font - Retail Variable */
+@font-face {
+  font-family: 'Retail Variable';
+  src: url('/fonts/RetailVariable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Retail Variable', sans-serif;
+  font-weight: 700;
+}
+
+/* Consistent text colors across all screen sizes */
+@layer base {
+  /* Headings - Dark text for light mode, light text for dark mode */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  /* Body text - Slightly lighter for readability */
+  p, li, span, a {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  /* Ensure consistent colors in main content */
+  main {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+}
+
+/* Scroll offset for anchor links to account for sticky navbar */
+section[id] {
+  scroll-margin-top: 120px;
+}
+
+/* Custom Animations */
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}

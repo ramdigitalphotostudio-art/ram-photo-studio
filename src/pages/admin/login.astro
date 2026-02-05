@@ -1,0 +1,283 @@
+---
+export const prerender = false;
+
+import { signIn } from "../../lib/auth";
+
+let errorMessage = "";
+let successMessage = "";
+
+// Handle form submission
+if (Astro.request.method === "POST") {
+    try {
+        const formData = await Astro.request.formData();
+        const email = formData.get("email")?.toString();
+        const password = formData.get("password")?.toString();
+
+        if (!email || !password) {
+            errorMessage = "Please provide both email and password";
+        } else {
+            const { data, error } = await signIn(
+                email,
+                password,
+                Astro.cookies,
+            );
+
+            if (error) {
+                errorMessage = error.message || "Invalid email or password";
+            } else if (data.user) {
+                // Successfully logged in, redirect to admin dashboard
+                return Astro.redirect("/admin");
+            }
+        }
+    } catch (e: any) {
+        errorMessage = "An error occurred. Please try again.";
+    }
+}
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png"
+        />
+        <title>Admin Login - Ram Photo Studio</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    "Helvetica Neue", Arial, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .login-container {
+                background: white;
+                border-radius: 16px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                padding: 48px;
+                width: 100%;
+                max-width: 420px;
+                animation: slideUp 0.5s ease-out;
+            }
+
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .logo {
+                text-align: center;
+                margin-bottom: 32px;
+            }
+
+            .logo h1 {
+                font-size: 28px;
+                font-weight: 700;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 8px;
+            }
+
+            .logo p {
+                color: #6b7280;
+                font-size: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 24px;
+            }
+
+            label {
+                display: block;
+                font-size: 14px;
+                font-weight: 600;
+                color: #374151;
+                margin-bottom: 8px;
+            }
+
+            input[type="email"],
+            input[type="password"] {
+                width: 100%;
+                padding: 12px 16px;
+                border: 2px solid #e5e7eb;
+                border-radius: 8px;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                outline: none;
+            }
+
+            input[type="email"]:focus,
+            input[type="password"]:focus {
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            }
+
+            .btn-login {
+                width: 100%;
+                padding: 14px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            }
+
+            .btn-login:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            }
+
+            .btn-login:active {
+                transform: translateY(0);
+            }
+
+            .error-message {
+                background: #fee2e2;
+                border: 1px solid #fca5a5;
+                color: #991b1b;
+                padding: 12px 16px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .success-message {
+                background: #d1fae5;
+                border: 1px solid #6ee7b7;
+                color: #065f46;
+                padding: 12px 16px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                font-size: 14px;
+            }
+
+            .divider {
+                text-align: center;
+                margin: 24px 0;
+                color: #9ca3af;
+                font-size: 14px;
+            }
+
+            .back-link {
+                text-align: center;
+                margin-top: 24px;
+            }
+
+            .back-link a {
+                color: #667eea;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+            .back-link a:hover {
+                color: #764ba2;
+                text-decoration: underline;
+            }
+
+            .icon {
+                width: 20px;
+                height: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="login-container">
+            <div class="logo">
+                <h1>Ram Photo Studio</h1>
+                <p>Admin Dashboard</p>
+            </div>
+
+            {
+                errorMessage && (
+                    <div class="error-message">
+                        <svg
+                            class="icon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        {errorMessage}
+                    </div>
+                )
+            }
+
+            {
+                successMessage && (
+                    <div class="success-message">{successMessage}</div>
+                )
+            }
+
+            <form method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="admin@example.com"
+                        required
+                        autocomplete="email"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                        autocomplete="current-password"
+                    />
+                </div>
+
+                <button type="submit" class="btn-login">Sign In</button>
+            </form>
+
+            <div class="back-link">
+                <a href="/">← Back to Website</a>
+            </div>
+        </div>
+    </body>
+</html>

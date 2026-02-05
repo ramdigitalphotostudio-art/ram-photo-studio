@@ -1,0 +1,77 @@
+---
+interface Props {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    buttonText?: string;
+}
+
+const {
+    title = "Ready to create",
+    subtitle = "Let's plan your next shoot.",
+    description = "Share your event details and vision — we'll respond with packages, availability, and creative ideas.",
+    buttonText = "Book a Session",
+} = Astro.props;
+---
+
+<section
+    class="mt-16 mb-6
+      flex flex-col md:flex-row items-center justify-between
+      gap-4 md:gap-6
+      p-6 md:p-8 rounded-2xl
+      bg-[#E8D5B5]
+      border-2 border-[#E8D5B5]
+      text-[#1a1a1a] shadow-lg"
+>
+    <!-- Centered Logo -->
+    <div class="hidden md:flex items-center justify-center px-6 self-center">
+        <img
+            src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png"
+            alt="Ram Photo Studio"
+            class="w-32 h-32 object-contain"
+        />
+    </div>
+
+    <div class="flex-1">
+        <p
+            class="uppercase tracking-[0.25em] text-sm text-[#6B5744] font-semibold"
+        >
+            {title}
+        </p>
+        <h3 class="text-2xl md:text-3xl font-semibold">
+            {subtitle}
+        </h3>
+        <p class="text-[#1a1a1a] mt-2">
+            {description}
+        </p>
+    </div>
+
+    <div class="flex gap-3 flex-wrap md:flex-nowrap">
+        <a
+            href="tel:+919412733288"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+          bg-gradient-to-r from-[#20C997] to-[#10A37F] text-white font-semibold
+          hover:from-[#10A37F] hover:to-[#0D8F6E]
+          hover:scale-105 hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
+          transition-all duration-300
+          shadow-[0_4px_10px_rgba(0,0,0,0.2),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+          hover:translate-y-[-2px]
+          active:translate-y-[1px] active:shadow-[0_2px_8px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+        >
+            Call Now
+        </a>
+        <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+          bg-gradient-to-r from-[#C9954D] to-[#B8894E] text-white font-semibold
+          hover:from-[#D4A056] hover:to-[#C9954D]
+          hover:scale-105 hover:shadow-[0_8px_30px_rgba(201,149,77,0.5),0_2px_10px_rgba(0,0,0,0.2)]
+          transition-all duration-300
+          shadow-[0_4px_15px_rgba(201,149,77,0.4),0_2px_5px_rgba(0,0,0,0.15),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+          hover:translate-y-[-2px]
+          active:translate-y-[1px] active:shadow-[0_2px_10px_rgba(201,149,77,0.3),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+        >
+            {buttonText}
+        </a>
+    </div>
+</section>

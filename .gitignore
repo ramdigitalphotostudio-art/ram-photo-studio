@@ -1,0 +1,59 @@
+# ============================================
+# Build Output & Generated Files
+# ============================================
+dist/
+.astro/
+.vercel/
+.netlify/
+
+# ============================================
+# Dependencies
+# ============================================
+node_modules/
+package-lock.json  # Optional: remove this line if you want to commit it
+
+# ============================================
+# Environment Variables (CRITICAL - NEVER COMMIT!)
+# ============================================
+.env
+.env.local
+.env.production
+.env.*.local
+
+# ============================================
+# Logs
+# ============================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# ============================================
+# OS-Specific Files
+# ============================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# IDE/Editor Settings
+# ============================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+*.temp
+.cache/
+
+# ============================================
+# Optional: Ignore sensitive documentation
+# ============================================
+# QUICK_REFERENCE.md  # Uncomment if it contains sensitive info
+# SUPABASE_SETUP_GUIDE.md  # Uncomment if it contains API keys

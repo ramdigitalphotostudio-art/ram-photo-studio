@@ -1,0 +1,642 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+---
+
+<BaseLayout>
+  <section class="text-center space-y-3 md:space-y-4 relative">
+    <!-- Watermark Logo -->
+    <div
+      class="absolute inset-0 flex items-center justify-center pointer-events-none top-5 overflow"
+    >
+      <img
+        src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png"
+        alt="Ram Photo Studio Watermark"
+        class="w-full aspect-square md:w-80 md:h-80 opacity-[0.20] object-contain"
+      />
+    </div>
+
+    <!-- Content (on top of watermark) -->
+    <div class="relative z-10">
+      <p class="uppercase tracking-[0.3em] text-sm text-[#D97706]">
+        Still Photography
+      </p>
+      <h1 class="text-3xl md:text-4xl font-semibold">
+        Still Photography – Studio Experience
+      </h1>
+      <p class="text-black dark:text-[#CDC3B7] max-w-3xl mx-auto">
+        Our fully air-conditioned studio is designed to create elegant, timeless
+        still photographs using controlled lighting and carefully curated
+        backgrounds. Each session is conducted in a calm, professional
+        environment, ensuring comfort and confidence for every client.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <a
+          href="#studio"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Studio Photography
+        </a>
+        <a
+          href="#matrimonial"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Matrimonial
+        </a>
+        <a
+          href="#baby"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Baby Photoshoot
+        </a>
+        <a
+          href="#product"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Product Photo Shoot
+        </a>
+        <a
+          href="#outdoor"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Outdoor Photography
+        </a>
+        <a
+          href="#event"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Event & Celebration
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+            bg-gradient-to-r from-[#A67C3A] to-[#8B6F3F] text-white font-semibold
+            hover:from-[#B8894E] hover:to-[#A67C3A]
+            hover:scale-105 hover:shadow-[0_8px_30px_rgba(166,124,58,0.5),0_2px_10px_rgba(0,0,0,0.2)]
+            transition-all duration-300
+            shadow-[0_4px_15px_rgba(166,124,58,0.4),0_2px_5px_rgba(0,0,0,0.15),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+            hover:translate-y-[-2px]
+            active:translate-y-[1px] active:shadow-[0_2px_10px_rgba(166,124,58,0.3),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+        >
+          Plan your still session
+        </a>
+        <a
+          href="/gallery#still"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-[#D97706] text-[#D97706] dark:border-[#D4A373] dark:text-[#D4A373] font-semibold hover:bg-[#FFF4E6] transition-all duration-300"
+        >
+          View recent work
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Studio Portrait Photography
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Timeless portraits created with carefully controlled lighting.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        Timeless portraits created with carefully controlled lighting and clean,
+        elegant backgrounds. Ideal for individuals, couples, families, and
+        professionals seeking polished images for personal or corporate use.
+      </p>
+      <div
+        class="grid sm:grid-cols-3 gap-4 text-sm text-black dark:text-[#CDC3B7]"
+      >
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Best for</h3>
+          <p class="mt-1">
+            Individual portraits, couples, siblings, small families, corporate
+            profiles
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Includes</h3>
+          <p class="mt-1">
+            Guided posing, multiple background options, curated professional
+            edits
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Add-ons</h3>
+          <p class="mt-1">
+            Premium framed prints, albums, and digital image packages
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="/images/gallery/gallery-11.jpg"
+          alt="Studio portrait example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+          style="object-position: center"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414302/001_copy_ga0blj.jpg"
+          alt="Family studio portrait example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="matrimonial"
+    class="mt-16 grid gap-8 md:grid-cols-2 items-center"
+  >
+    <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/gallery/gallery-1.JPG"
+          alt="Matrimonial portrait example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/hero/recent-work-4.JPG"
+          alt="Profile style portrait example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+    <div class="order-1 md:order-2 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Matrimonial & Bio-Data Photography
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Clean, confident, and approachable portraits.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        Our matrimonial photography services focus on creating clean, confident,
+        and approachable portraits. Special attention is given to posture,
+        expressions, styling, and background selection, resulting in photographs
+        that present you at your best. These sessions are thoughtfully guided,
+        ensuring natural expressions and high-resolution outputs that meet both
+        traditional and modern requirements.
+      </p>
+      <div
+        class="grid sm:grid-cols-3 gap-4 text-sm text-black dark:text-[#CDC3B7]"
+      >
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Best for</h3>
+          <p class="mt-1">
+            High-resolution images ready for print and digital platforms
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Includes</h3>
+          <p class="mt-1">
+            Outfit suggestions, posture correction, best angles
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Add-On</h3>
+          <p class="mt-1">Classic studio, soft gradients, subtle textures</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="baby" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Dedicated Baby Photo Studio
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Specialized setup for newborns and infants.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        We proudly offer a separate, dedicated baby photography studio—one of
+        the few specialized setups in the region. Designed with a soothing
+        ambience, soft lighting, and baby-safe props, this space ensures comfort
+        and safety for newborns and infants. Each baby session is handled
+        patiently and gently, allowing us to capture precious smiles and
+        milestone moments naturally.
+      </p>
+      <div
+        class="grid sm:grid-cols-3 gap-4 text-sm text-black dark:text-[#CDC3B7]"
+      >
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Best for</h3>
+          <p class="mt-1">Newborns, infants, and milestone baby shoots</p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Includes</h3>
+          <p class="mt-1">Soft lighting and temperature-controlled comfort</p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Add-On</h3>
+          <p class="mt-1">Multiple backgrounds and baby-friendly props</p>
+        </div>
+      </div>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        These sessions pair beautifully with albums, wall frames, and gift items
+        available in our studio.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/hero/hero-slide-4.jpg"
+          alt="Baby photoshoot example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/gallery/gallery-9.JPG"
+          alt="Family with baby photoshoot example"
+          loading="lazy"
+          class="w-full h-full object-cover scale-100 transition duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="product" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/services/product-image-2.webp"
+          alt="Product photography example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/services/product-image-1.JPG"
+          alt="Styled product shot example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+          style="object-position: bottom;"
+        />
+      </div>
+    </div>
+    <div class="order-1 md:order-2 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Product Photo Shoot
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Detailed visuals for brands and businesses.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        Whether you’re updating your menu, e-commerce catalog, or social feed,
+        we create consistent, color-true images that highlight the best of your
+        products.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Styles</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Clean white, lifestyle with props, flat-lays
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Prep</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Cleaning, arranging, and planning angles for consistency
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Delivery</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Web-ready and high-resolution files for print
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="outdoor" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Outdoor Photography – Natural Light, Timeless Moments
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold mt-4">
+        Natural Light & On-Location Portraits
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        We carefully plan every outdoor session—selecting the right location,
+        scouting angles, and timing the shoot to make the most of soft,
+        flattering natural light. Our gentle guidance and posing prompts ensure
+        you feel comfortable, confident, and completely yourself.
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Ideal for</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Pre-wedding shoots, couples, families, baby showers, lifestyle
+            portraits
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Locations</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Parks, city streets, rooftops, heritage spots, or your favorite
+            hangout
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Timing</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Golden hour sessions for warm, cinematic light
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Guidance</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Natural prompts and relaxed posing for candid expressions
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/services/outdoor-photo-1.jpg"
+          alt="Outdoor portrait example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1768857037/Photo-23_wvztha.jpg"
+          alt="Outdoor photoshoot example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="event" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/services/event-photo-1.JPG"
+          alt="Event photography example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/services/event-photo-2.JPG"
+          alt="Celebration photography example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+          style="object-position: bottom, left;"
+        />
+      </div>
+    </div>
+    <div class="order-1 md:order-2 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Event & Celebration Photography
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Preserving your priceless milestones.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        We are committed to preserving your priceless milestones—from pre-birth
+        celebrations and a child's sacred rituals, to pre-wedding, wedding, and
+        post-wedding ceremonies, including haldi, mehendi, ring ceremonies,
+        anniversaries, and receptions. Our experienced team is always present to
+        capture genuine moments, emotions, and unscripted memories as they
+        unfold.
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Ideal for</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Wedding shoots, Destination wedding, Birthdays, Ceremonies
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Locations</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Resorts, Hotels, Gardens
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Timing</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Round the clock, ready to capture precious Moments
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Guidance</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Entries, poses, backgrounds, lighting
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to create"
+    subtitle="Let's plan your next photography session."
+    description="Share your date, type of session, and any reference images — we'll respond quickly with availability and a simple plan."
+    buttonText="Book a Session"
+  />
+
+  <!-- Image Modal -->
+  <div
+    id="imageModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Backdrop with blur -->
+    <div
+      id="modalBackdrop"
+      class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+    >
+    </div>
+
+    <!-- Close button -->
+    <button
+      id="closeModalBtn"
+      class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 focus:outline-none ring-2 ring-white/20"
+      aria-label="Close modal"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-8 w-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Image Container -->
+    <div
+      class="relative z-10 w-full max-w-5xl h-full flex items-center justify-center pointer-events-none"
+    >
+      <img
+        id="modalImg"
+        src=""
+        alt="Full screen view"
+        class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl pointer-events-auto scale-95 transition-transform duration-300"
+      />
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      // Image Modal functionality
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      const closeBtn = document.getElementById("closeModalBtn");
+      const backdrop = document.getElementById("modalBackdrop");
+      const enlargeableImages = document.querySelectorAll(
+        "[data-enlargeable-image]",
+      );
+
+      if (modal && modalImg && closeBtn && backdrop) {
+        const openModal = (src) => {
+          modalImg.src = src;
+          modal.classList.remove("hidden");
+          // Force reflow to enable transition
+          void modal.offsetWidth;
+
+          modal.classList.remove("opacity-0");
+          modalImg.classList.remove("scale-95");
+          modalImg.classList.add("scale-100");
+          document.body.style.overflow = "hidden"; // Prevent scrolling
+        };
+
+        const closeModal = () => {
+          modal.classList.add("opacity-0");
+          modalImg.classList.remove("scale-100");
+          modalImg.classList.add("scale-95");
+
+          setTimeout(() => {
+            modal.classList.add("hidden");
+            modalImg.src = "";
+            document.body.style.overflow = "";
+          }, 300);
+        };
+
+        enlargeableImages.forEach((container) => {
+          container.addEventListener("click", () => {
+            // Only open modal on mobile (viewport width < 768px)
+            if (window.innerWidth >= 768) return;
+
+            const img = container.querySelector("img");
+            if (img && img.src) openModal(img.src);
+          });
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        backdrop.addEventListener("click", closeModal);
+
+        // Close on Escape key
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+            closeModal();
+          }
+        });
+      }
+    })();
+  </script>
+</BaseLayout>

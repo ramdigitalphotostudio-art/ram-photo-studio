@@ -1,0 +1,474 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+---
+
+<BaseLayout>
+  <!-- Hero Section -->
+  <section class="text-center space-y-3 md:space-y-4 relative">
+    <!-- Watermark Logo -->
+    <div
+      class="absolute inset-0 flex items-center justify-center pointer-events-none top-5 overflow"
+    >
+      <img
+        src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png"
+        alt="Ram Photo Studio Watermark"
+        class="w-full aspect-square md:w-80 md:h-80 opacity-[0.20] object-contain"
+      />
+    </div>
+
+    <!-- Content (on top of watermark) -->
+    <div class="relative z-10">
+      <p class="uppercase tracking-[0.3em] text-sm text-[#D97706]">
+        Printing Solutions
+      </p>
+      <h1 class="text-3xl md:text-4xl font-semibold">
+        Printing Solutions – Precision & Quality
+      </h1>
+      <p class="text-black dark:text-[#CDC3B7] max-w-3xl mx-auto text-justify">
+        Our advanced printing solutions are trusted by photographers, designers,
+        businesses, and individuals. From large-format printing and A0 scanning
+        to cameo cutting and high-end copier services, we deliver sharp details,
+        accurate colors, and long-lasting output.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] max-w-3xl mx-auto text-justify">
+        Using premium materials and state-of-the-art equipment, we support both
+        creative and technical printing needs—ensuring consistency, durability,
+        and professional finish across every project.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <a
+          href="#largeformat"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Large Format
+        </a>
+        <a
+          href="#scanning"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          A0 Scanning
+        </a>
+        <a
+          href="#cameo"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Cameo Cutting
+        </a>
+        <a
+          href="#copier"
+          class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+        >
+          Copier Services
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+            bg-gradient-to-r from-[#A67C3A] to-[#8B6F3F] text-white font-semibold
+            hover:from-[#B8894E] hover:to-[#A67C3A]
+            hover:scale-105 hover:shadow-[0_8px_30px_rgba(166,124,58,0.5),0_2px_10px_rgba(0,0,0,0.2)]
+            transition-all duration-300
+            shadow-[0_4px_15px_rgba(166,124,58,0.4),0_2px_5px_rgba(0,0,0,0.15),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+            hover:translate-y-[-2px]
+            active:translate-y-[1px] active:shadow-[0_2px_10px_rgba(166,124,58,0.3),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+        >
+          Get a quote
+        </a>
+        <a
+          href="/gallery#printing"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+            bg-white border border-[#D97706] text-[#D97706]
+            dark:border-[#D4A373] dark:text-[#D4A373]
+            font-semibold hover:bg-[#FFF4E6] transition-all duration-300"
+        >
+          View samples
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Large Format Printing -->
+  <section
+    id="largeformat"
+    class="mt-16 grid gap-8 md:grid-cols-2 items-center"
+  >
+    <div class="space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Large Format Printing
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        High-impact prints for displays, events, and technical needs.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        Our large-format printing services are ideal for visual communication
+        that demands scale and clarity. Whether it's a promotional banner or a
+        technical drawing, we produce prints that stand out.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Materials</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Premium photo paper, canvas, vinyl, fabric, and specialty media
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Sizes</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            A4 to A0, Man-size prints, up to 42" × 30 meters, and custom
+            dimensions
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Applications</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Posters, banners, signage, maps, architectural and engineering
+            prints
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/banner.jpeg"
+          alt="Large format printing example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/paper.jpeg"
+          alt="Poster printing example"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Scanning A0 Size -->
+  <section id="scanning" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/a4paper-1.avif"
+          alt="Document scanning services"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/scanner-1.png"
+          alt="High resolution scanning"
+          loading="lazy"
+          class="w-full h-full object-contain transition duration-700 scale-105 hover:scale-110"
+          style="background-color: rgba(87, 84, 84, 0.136)"
+        />
+      </div>
+    </div>
+    <div class="order-1 md:order-2 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        A0->A4 Size Scanning
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        High-resolution digitization for large documents.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        We provide precise scanning services for oversized documents, preserving
+        every detail with exceptional clarity.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Resolution</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Up to 12800/9600 DPI for crisp, accurate scans
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Formats</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            PDF, JPEG, TIFF, and more
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Best for</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Blueprints, architectural plans, maps, posters, artwork, and
+            archives
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cameo 5 Cutting -->
+  <section id="cameo" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Cameo Cutting
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Precision vinyl cutting for customized designs.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        Using advanced Cameo cutting technology, we offer clean and accurate
+        cutting for creative and professional applications.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Ideal for</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Vinyl graphics, decals, logos, and custom shapes
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Specialty</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Heat-transfer material cutting for apparel and merchandise
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Finish</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Smooth edges with precise detailing
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/EpSON-P8000.jpg"
+          alt="Precision cutting and crafts"
+          loading="lazy"
+          class="w-full h-full object-contain transition duration-700 hover:scale-105"
+          style="background-color: white"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/cameo5-1.jpg"
+          alt="Custom stickers and decals"
+          loading="lazy"
+          class="w-full h-full object-contain transition duration-700 hover:scale-105"
+          style="background-color: white"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Copier / Printing -->
+  <section id="copier" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+    <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/Canon5300-2.jpg"
+          alt="Document printing and copying"
+          loading="lazy"
+          class="w-full h-full object-contain transition duration-700 hover:scale-105"
+          style="background-color: white"
+        />
+      </div>
+      <div
+        class="rounded-2xl overflow-hidden aspect-[4/5] bg-[#E8DFD3] dark:bg-[#1F1D1A] cursor-pointer tap-highlight-transparent"
+        data-enlargeable-image
+      >
+        <img
+          src="images/printing-solutions/Canon5300-1.webp"
+          alt="Professional printing services"
+          loading="lazy"
+          class="w-full h-full object-cover transition duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+    <div class="order-1 md:order-2 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white">
+        Copier Services
+      </h2>
+      <p class="text-xl text-[#f97316] font-bold">
+        Reliable copying and enlargement solutions.
+      </p>
+      <p class="text-black dark:text-[#CDC3B7] text-justify">
+        From simple A4 photocopying to large-scale enlargements, our copier
+        services cater to both everyday and specialized requirements.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3 text-sm">
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Services</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            Monochrome and color copying, multi-fold enlargement for maps,
+            plans, and designs
+          </p>
+        </div>
+        <div
+          class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+        >
+          <h3 class="font-bold text-[#f97316] text-base">Technology</h3>
+          <p class="mt-1 text-black dark:text-[#CDC3B7]">
+            High-resolution printing using 8-color pigment ink technology for
+            superior detail beyond standard CMYK
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTASection
+    title="Ready to print"
+    subtitle="Let's bring your designs to life."
+    description="Share your project details, sizes, and quantities — we'll respond with pricing, timelines, and material options."
+    buttonText="Order Prints"
+  />
+</BaseLayout>
+
+<!-- Image Modal -->
+<div
+  id="imageModal"
+  class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Backdrop with blur -->
+  <div
+    id="modalBackdrop"
+    class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Close button -->
+  <button
+    id="closeModalBtn"
+    class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 focus:outline-none ring-2 ring-white/20"
+    aria-label="Close modal"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-8 w-8"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Image Container -->
+  <div
+    class="relative z-10 w-full max-w-5xl h-full flex items-center justify-center pointer-events-none"
+  >
+    <img
+      id="modalImg"
+      src=""
+      alt="Full screen view"
+      class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl pointer-events-auto scale-95 transition-transform duration-300"
+    />
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    // Image Modal functionality
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementById("closeModalBtn");
+    const backdrop = document.getElementById("modalBackdrop");
+    const enlargeableImages = document.querySelectorAll(
+      "[data-enlargeable-image]",
+    );
+
+    if (modal && modalImg && closeBtn && backdrop) {
+      const openModal = (src) => {
+        modalImg.src = src;
+        modal.classList.remove("hidden");
+        // Force reflow
+        void modal.offsetWidth;
+
+        modal.classList.remove("opacity-0");
+        modalImg.classList.remove("scale-95");
+        modalImg.classList.add("scale-100");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeModal = () => {
+        modal.classList.add("opacity-0");
+        modalImg.classList.remove("scale-100");
+        modalImg.classList.add("scale-95");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          modalImg.src = "";
+          document.body.style.overflow = "";
+        }, 300);
+      };
+
+      enlargeableImages.forEach((container) => {
+        container.addEventListener("click", () => {
+          // Only open modal on mobile (viewport width < 768px)
+          if (window.innerWidth >= 768) return;
+
+          const img = container.querySelector("img");
+          if (img && img.src) openModal(img.src);
+        });
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+      backdrop.addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+          closeModal();
+        }
+      });
+    }
+  })();
+</script>

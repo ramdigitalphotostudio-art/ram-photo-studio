@@ -1,0 +1,15 @@
+---
+export const prerender = false;
+
+import { signOut } from "../../lib/auth";
+
+// Handle logout
+const { error } = await signOut(Astro.cookies);
+
+if (error) {
+    // Silently handle logout error
+}
+
+// Redirect to login page
+return Astro.redirect("/admin/login");
+---

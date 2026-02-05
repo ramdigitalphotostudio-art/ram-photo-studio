@@ -1,0 +1,495 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+---
+
+<BaseLayout>
+    <!-- Hero Section -->
+    <section class="text-center space-y-3 md:space-y-4 relative">
+        <!-- Watermark Logo -->
+        <div
+            class="absolute inset-0 flex items-center justify-center pointer-events-none top-5 overflow"
+        >
+            <img
+                src="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png"
+                alt="Ram Photo Studio Watermark"
+                class="w-full aspect-square md:w-80 md:h-80 opacity-[0.20] object-contain"
+            />
+        </div>
+
+        <!-- Content (on top of watermark) -->
+        <div class="relative z-10">
+            <p class="uppercase tracking-[0.3em] text-sm text-[#D97706]">
+                Videography
+            </p>
+            <h1 class="text-3xl md:text-4xl font-semibold">
+                Videography – Turning Moments into Cinematic Memories
+            </h1>
+            <p
+                class="text-black dark:text-[#CDC3B7] max-w-3xl mx-auto text-justify"
+            >
+                At Ram Digital Photo Studio, videography is more than recording
+                events—it is the art of storytelling in motion. We capture
+                emotions, rituals, laughter, and celebrations as they naturally
+                unfold, transforming them into beautifully crafted cinematic
+                films you'll relive for years to come.
+            </p>
+            <p
+                class="text-black dark:text-[#CDC3B7] max-w-3xl mx-auto text-justify"
+            >
+                From intimate family moments to grand wedding celebrations, our
+                team combines creative vision, advanced equipment, and
+                experienced storytelling to deliver films that feel personal,
+                elegant, and timeless.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 pt-2">
+                <a
+                    href="#cinematography"
+                    class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                    Cinematography
+                </a>
+                <a
+                    href="#invitation"
+                    class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                    Invitation Videos
+                </a>
+                <a
+                    href="#teasers"
+                    class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                    Teasers
+                </a>
+                <a
+                    href="#drone"
+                    class="px-4 py-2 bg-[#E8D5B5] rounded-full border-2 border-[#A67C3A] dark:border-[#D4A373] text-sm hover:bg-[#D4A373] hover:border-[#8B6F3F] hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                    Drone & LED
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 pt-4">
+                <a
+                    href="/contact"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+                        bg-gradient-to-r from-[#A67C3A] to-[#8B6F3F] text-white font-semibold
+                        hover:from-[#B8894E] hover:to-[#A67C3A]
+                        hover:scale-105 hover:shadow-[0_8px_30px_rgba(166,124,58,0.5),0_2px_10px_rgba(0,0,0,0.2)]
+                        transition-all duration-300
+                        shadow-[0_4px_15px_rgba(166,124,58,0.4),0_2px_5px_rgba(0,0,0,0.15),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+                        hover:translate-y-[-2px]
+                        active:translate-y-[1px] active:shadow-[0_2px_10px_rgba(166,124,58,0.3),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+                >
+                    Plan your video shoot
+                </a>
+                <a
+                    href="/gallery#video"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+                        bg-white border border-[#D97706] text-[#D97706]
+                        dark:border-[#D4A373] dark:text-[#D4A373]
+                        font-semibold hover:bg-[#FFF4E6] transition-all duration-300"
+                >
+                    View recent work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinematography -->
+    <section
+        id="cinematography"
+        class="mt-16 grid gap-8 md:grid-cols-2 items-center"
+    >
+        <div class="space-y-4">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white"
+            >
+                Cinematic Wedding Films
+            </h2>
+            <p class="text-xl text-[#f97316] font-bold">
+                Your story, told like a film.
+            </p>
+            <p class="text-black dark:text-[#CDC3B7] text-justify">
+                We document your entire journey—from behind-the-scenes
+                preparations to the final dance—using multi-camera setups that
+                ensure no moment is missed. Every frame is carefully edited,
+                color-graded, and paced to reflect the emotion of your day.
+            </p>
+            <p class="text-xl text-[#f97316] font-bold mt-3">
+                What makes it special:
+            </p>
+            <ul
+                class="list-disc list-inside space-y-1 text-black dark:text-[#CDC3B7] text-sm"
+            >
+                <li>Seamless storytelling with candid moments</li>
+                <li>Professional cinematic color grading</li>
+                <li>Smooth edits that flow naturally with music</li>
+            </ul>
+            <div class="grid sm:grid-cols-3 gap-3 text-sm">
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">Coverage</h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Full-day or custom hour packages
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">Delivery</h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        4K/HD films with cinematic color grading
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">
+                        Enhancements
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Drone shots, same-day edits, highlight reels
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div
+            class="rounded-2xl overflow-hidden aspect-video bg-[#E8DFD3] dark:bg-[#1F1D1A]"
+        >
+            <video
+                class="w-full h-full object-cover"
+                controls
+                preload="metadata"
+                poster="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306777/Reel_2_1_nhtdwt.jpg"
+            >
+                <source
+                    src="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306777/Reel_2_1_nhtdwt.mp4"
+                    type="video/mp4"
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Invitation Video & Teasers -->
+    <section
+        id="teasers"
+        class="mt-16 grid gap-8 md:grid-cols-2 items-center"
+    >
+        <div
+            class="order-2 md:order-1 rounded-2xl overflow-hidden aspect-video bg-[#E8DFD3] dark:bg-[#1F1D1A]"
+        >
+            <video
+                class="w-full h-full object-cover"
+                controls
+                preload="metadata"
+                poster="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306776/invitation_vid_e8mswr.jpg"
+            >
+                <source
+                    src="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306776/invitation_vid_e8mswr.mov"
+                    type="video/mp4"
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="order-1 md:order-2 space-y-4">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white"
+            >
+                Invitation Videos & Highlight Teasers
+            </h2>
+            <p class="text-xl text-[#f97316] font-bold">
+                Announce your celebration in style.
+            </p>
+            <p class="text-black dark:text-[#CDC3B7] text-justify">
+                Our digital invitation videos and teasers are designed to
+                excite, engage, and impress. Perfect for sharing with friends
+                and family, these short films blend visuals, music, and
+                storytelling into memorable announcements.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">
+                        Invitation Videos
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Custom animations and graphics, couple story and theme
+                        integration, music-synced visuals
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">Teasers</h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        1–2 minute social-media-friendly videos, trending music
+                        and dynamic effects, fast delivery within 24–48 hours
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Mixing & Editing -->
+    <section id="mixing" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+        <div class="space-y-4">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white"
+            >
+                Professional Video Editing & Post-Production
+            </h2>
+            <p class="text-xl text-[#f97316] font-bold">
+                Where raw footage becomes art.
+            </p>
+            <p class="text-black dark:text-[#CDC3B7] text-justify">
+                Our post-production process is handled by skilled editors who
+                focus on rhythm, emotion, and visual balance—ensuring a
+                polished, cinematic finish.
+            </p>
+            <p class="text-xl text-[#f97316] font-bold mt-3">
+                Editing Includes:
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3 text-sm">
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">
+                        Color Correction & Grading
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Cinematic color correction & grading
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">
+                        Audio Mixing
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Professional audio mixing and enhancement
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">
+                        Transitions & Effects
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Smooth transitions and creative effects
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div
+            class="rounded-2xl overflow-hidden aspect-video bg-[#E8DFD3] dark:bg-[#1F1D1A]"
+        >
+            <video
+                class="w-full h-full object-cover"
+                controls
+                preload="metadata"
+                poster="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306775/Reel-----_1_thruuq.jpg"
+            >
+                <source
+                    src="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306775/Reel-----_1_thruuq.mp4"
+                    type="video/mp4"
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Drone & LED Wall -->
+    <section id="drone" class="mt-16 grid gap-8 md:grid-cols-2 items-center">
+        <div
+            class="order-2 md:order-1 rounded-2xl overflow-hidden aspect-video bg-[#E8DFD3] dark:bg-[#1F1D1A]"
+        >
+            <video
+                class="w-full h-full object-cover"
+                controls
+                preload="metadata"
+                poster="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306783/drone_vid_krb095.jpg"
+            >
+                <source
+                    src="https://res.cloudinary.com/djrs9oqz7/video/upload/v1768306783/drone_vid_krb095.mov"
+                    type="video/mp4"
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="order-1 md:order-2 space-y-4">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white"
+            >
+                Drone Coverage & LED Wall Experiences
+            </h2>
+            <p class="text-xl text-[#f97316] font-bold">
+                Add scale, drama, aerial view and visual impact.
+            </p>
+            <p class="text-black dark:text-[#CDC3B7] text-justify">
+                Stunning 4K aerial cinematography with licensed drone operators
+                for venue establishing shots and outdoor ceremonies. Plus
+                customizable LED wall backdrops with live photo/video playback
+                and themed graphics.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base">
+                        Drone Cinematography
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Capture breathtaking aerial perspectives with licensed
+                        drone operators, ideal for venue highlights, outdoor
+                        ceremonies, and grand entries
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-[#FBF7F2] to-[#F5EFE0] dark:bg-[#2B2824] border-2 border-[#E2D8CB] dark:border-[#3A3630] shadow-sm p-4 hover:shadow-lg hover:scale-105 hover:border-[#D4A373] transition-all duration-300"
+                >
+                    <h3 class="font-bold text-[#f97316] text-base" id="wallled">
+                        LED Wall Displays
+                    </h3>
+                    <p class="mt-1 text-black dark:text-[#CDC3B7]">
+                        Transform your venue with customized LED walls featuring
+                        live photo/video playback, themed visuals, and
+                        interactive content that keeps guests engaged
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTASection
+        title="Ready to create"
+        subtitle="Let's plan your videography coverage."
+        description="Share your event date, style preferences, and any special requests — we'll respond with packages, availability, and creative ideas."
+        buttonText="Plan Your Film"
+    />
+
+    <!-- Video Modal -->
+    <div
+        id="videoModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300"
+        role="dialog"
+        aria-modal="true"
+    >
+        <!-- Backdrop with blur -->
+        <div
+            id="videoModalBackdrop"
+            class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+        >
+        </div>
+
+        <!-- Close button -->
+        <button
+            id="closeVideoModalBtn"
+            class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 focus:outline-none ring-2 ring-white/20"
+            aria-label="Close modal"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Video Container -->
+        <div
+            class="relative z-10 w-full max-w-5xl h-full flex items-center justify-center pointer-events-none"
+        >
+            <video
+                id="modalVideo"
+                controls
+                playsinline
+                class="max-w-full max-h-[85vh] rounded-lg shadow-2xl pointer-events-auto scale-95 transition-transform duration-300"
+            >
+                <source src="" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+</BaseLayout>
+
+<script is:inline>
+    // Video Modal Functionality
+    (function () {
+        const videoModal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        const modalClose = document.getElementById("closeVideoModalBtn");
+        const backdrop = document.getElementById("videoModalBackdrop");
+        const pageVideos = document.querySelectorAll("video");
+
+        if (videoModal && modalVideo && modalClose && backdrop) {
+            const openModal = (videoSrc) => {
+                const modalSource = modalVideo.querySelector("source");
+                if (modalSource) {
+                    modalSource.src = videoSrc;
+                    modalVideo.load();
+                }
+
+                videoModal.classList.remove("hidden");
+                // Force reflow
+                void videoModal.offsetWidth;
+
+                videoModal.classList.remove("opacity-0");
+                modalVideo.classList.remove("scale-95");
+                modalVideo.classList.add("scale-100");
+                document.body.style.overflow = "hidden";
+
+                modalVideo.play();
+            };
+
+            const closeModal = () => {
+                videoModal.classList.add("opacity-0");
+                modalVideo.classList.remove("scale-100");
+                modalVideo.classList.add("scale-95");
+
+                setTimeout(() => {
+                    videoModal.classList.add("hidden");
+                    modalVideo.pause();
+                    modalVideo.currentTime = 0;
+                    document.body.style.overflow = "";
+                }, 300);
+            };
+
+            pageVideos.forEach((video) => {
+                if (video.id === "modalVideo") return;
+
+                video.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const videoSource = video.querySelector("source")?.src;
+                    if (videoSource) {
+                        video.pause();
+                        openModal(videoSource);
+                    }
+                });
+            });
+
+            modalClose.addEventListener("click", closeModal);
+            backdrop.addEventListener("click", closeModal);
+
+            document.addEventListener("keydown", (e) => {
+                if (
+                    e.key === "Escape" &&
+                    !videoModal.classList.contains("hidden")
+                ) {
+                    closeModal();
+                }
+            });
+        }
+    })();
+</script>

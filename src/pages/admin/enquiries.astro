@@ -1,0 +1,449 @@
+---
+export const prerender = false;
+
+import { supabaseAdmin } from '../../lib/supabaseAdmin.js';
+import type { Enquiry } from '../../types/enquiry';
+
+// Server-side only - fetch enquiries using admin client
+let enquiries: Enquiry[] = [];
+let error: string | null = null;
+
+try {
+  const { data, error: fetchError } = await supabaseAdmin
+    .from('enquiries')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (fetchError) throw fetchError;
+  enquiries = data || [];
+} catch (e: any) {
+  error = e.message;
+}
+
+// Helper function to format date
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-IN', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
+// Helper function to get status badge color
+function getStatusColor(status: string): string {
+  switch (status) {
+    case 'to_be_contacted':
+      return 'bg-yellow-100 text-yellow-800 border border-yellow-500 dark:bg-yellow-900/30 dark:text-yellow-900 dark:border-yellow-500';
+    case 'resolved':
+      return 'bg-green-100 text-green-800 border border-green-500 dark:bg-green-900/30 dark:text-green-900 dark:border-green-500';
+    case 'spam':
+      return 'bg-red-100 text-red-800 border border-red-500 dark:bg-red-900/30 dark:text-red-900 dark:border-red-500';
+    default:
+      return 'bg-blue-200 text-blue-900 border border-blue-900 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-900';
+  }
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/djrs9oqz7/image/upload/v1767454388/cropped_circle_image_1_npm0nr.png" />
+    <title>Enquiries - Admin Dashboard</title>
+  </head>
+
+  <body class="bg-white dark:bg-[#1A1A1A] text-[#2A2A2A] dark:text-[#EEEAE3] min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <!-- Highlighted Heading -->
+      <div class="mb-6 bg-gradient-to-r from-[#2563A8] to-[#1E4A8A] dark:from-[#60A5FA] dark:to-[#3B82F6] p-4 rounded-xl shadow-lg">
+        <div class="flex items-center justify-between flex-wrap gap-3">
+          <h1 class="text-4xl text-white">Enquiries</h1>
+          <div class="flex flex-wrap gap-3 text-white/90 text-sm">
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg font-semibold">{enquiries.length}</span>
+              <span>Total</span>
+            </div>
+            <div class="h-5 w-px bg-white/30"></div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg font-semibold text-blue-200">{enquiries.filter(e => e.status !== 'to_be_contacted' && e.status !== 'resolved' && e.status !== 'spam').length}</span>
+              <span>New</span>
+            </div>
+            <div class="h-5 w-px bg-white/30"></div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg font-semibold text-yellow-200">{enquiries.filter(e => e.status === 'to_be_contacted').length}</span>
+              <span>To Contact</span>
+            </div>
+            <div class="h-5 w-px bg-white/30"></div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg font-semibold text-green-200">{enquiries.filter(e => e.status === 'resolved').length}</span>
+              <span>Resolved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {error && (
+        <div class="p-4 rounded-lg bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 mb-6">
+          <p class="text-red-800 dark:text-red-200 font-semibold">Error loading enquiries</p>
+          <p class="text-red-700 dark:text-red-300 text-sm mt-1">{error}</p>
+        </div>
+      )}
+
+      {!error && enquiries.length === 0 && (
+        <div class="p-8 rounded-lg bg-gray-50 dark:bg-[#26231F] border border-gray-200 dark:border-[#3A4A5E] text-center">
+          <p class="text-gray-600 dark:text-[#B8D4F0]">No enquiries yet</p>
+        </div>
+      )}
+
+      {!error && enquiries.length > 0 && (
+        <div class="space-y-3">
+          {enquiries.map((enquiry) => (
+            <div class="rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-[#1E2838] dark:to-[#26231F] border border-blue-200 dark:border-[#3A4A5E] p-4 shadow-md hover:shadow-lg transition-all duration-200">
+              <!-- Main Content Row -->
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <!-- Left: Name, Status, Date, Message -->
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1 flex-wrap">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-[#E8F1F8]">
+                      {enquiry.name}
+                    </h3>
+                    <span class={`px-2 py-0.5 rounded-full text-xs font-semibold ${getStatusColor(enquiry.status)}`}>
+                      {enquiry.status}
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 dark:text-[#B8D4F0] mb-2">
+                    {formatDate(enquiry.created_at)}
+                  </p>
+                  <p class="text-sm text-black dark:text-[#B8D4F0] line-clamp-2 mb-3 md:mb-0">
+                    {enquiry.message}
+                  </p>
+                </div>
+
+                <!-- Right: Contact Info & Actions -->
+                <div class="flex flex-col gap-3 md:items-end md:min-w-[200px]">
+                  <!-- Contact Info -->
+                  <div class="text-left md:text-right text-xs space-y-1">
+                    <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${enquiry.email}&su=Re: Your enquiry - Ram Photo Studio&authuser=ramdigitalphotostudio@gmail.com`} target="_blank" rel="noopener noreferrer" class="block text-blue-700 dark:text-[#60A5FA] hover:underline truncate md:max-w-[200px]" title={`Email ${enquiry.email}`}>
+                      {enquiry.email}
+                    </a>
+                    <a href={`tel:${enquiry.phone}`} class="block text-blue-700 dark:text-[#60A5FA] hover:underline">
+                      {enquiry.phone}
+                    </a>
+                  </div>
+
+                  <!-- Status Buttons -->
+                  <div class="flex gap-1 flex-wrap md:justify-end">
+                    <button
+                      data-enquiry-id={enquiry.id}
+                      data-status="to_be_contacted"
+                      class="status-btn px-2 py-1 rounded text-xs font-semibold bg-yellow-100 text-yellow-800 border border-yellow-300 dark:bg-yellow-900/30 dark:text-yellow-300 dark:border-yellow-700 hover:opacity-80 transition"
+                      title="Mark as To Be Contacted"
+                    >
+                      To Contact
+                    </button>
+                    <button
+                      data-enquiry-id={enquiry.id}
+                      data-status="resolved"
+                      class="status-btn px-2 py-1 rounded text-xs font-semibold bg-green-100 text-green-800 border border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-700 hover:opacity-80 transition"
+                      title="Mark as Resolved"
+                    >
+                      Resolved
+                    </button>
+                    <button
+                      data-enquiry-id={enquiry.id}
+                      data-status="spam"
+                      class="status-btn px-2 py-1 rounded text-xs font-semibold bg-red-100 text-red-800 border border-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-700 hover:opacity-80 transition"
+                      title="Mark as Spam"
+                    >
+                      Spam
+                    </button>
+                    <button
+                      data-enquiry-id={enquiry.id}
+                      class="delete-btn px-2 py-1 rounded text-xs font-semibold bg-red-600 text-white border border-red-700 dark:bg-red-700 dark:border-red-800 hover:bg-red-700 dark:hover:bg-red-800 transition flex items-center gap-1"
+                      title="Delete Enquiry"
+                    >
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                      </svg>
+                      <span class="hidden sm:inline">Delete</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Reply Box -->
+              <div class="mt-3 pt-3 border-t border-[#A8C5E0] dark:border-[#3A4A5E]">
+                <form class="reply-form flex flex-col sm:flex-row gap-2" data-email={enquiry.email} data-phone={enquiry.phone.replace(/\D/g, '')} data-name={enquiry.name}>
+                  <input
+                    type="text"
+                    placeholder="Type your reply..."
+                    class="flex-1 px-3 py-2 text-sm rounded-lg border border-[#A8C5E0] dark:border-[#3A4A5E] bg-white dark:bg-[#1A2332] text-[#1A2332] dark:text-[#E8F1F8] focus:outline-none focus:border-[#2563A8] dark:focus:border-[#60A5FA]"
+                  />
+                  <div class="flex gap-2 flex-wrap">
+                    <button
+                      type="button"
+                      data-type="copy-email"
+                      class="reply-btn flex-1 sm:flex-none px-3 py-2 rounded-lg bg-[#2563A8] dark:bg-[#60A5FA] text-white text-xs font-semibold hover:opacity-90 transition flex items-center justify-center gap-1"
+                      title="Copy email text to clipboard"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                      </svg>
+                      <span class="hidden sm:inline">Email</span>
+                    </button>
+                    <button
+                      type="button"
+                      data-type="whatsapp"
+                      class="reply-btn flex-1 sm:flex-none px-3 py-2 rounded-lg bg-[#25D366] text-white text-xs font-semibold hover:opacity-90 transition flex items-center justify-center gap-1"
+                      title="Send via WhatsApp"
+                    >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                      </svg>
+                      <span class="hidden sm:inline">WhatsApp</span>
+                    </button>
+                    <button
+                      type="button"
+                      data-type="sms"
+                      class="reply-btn flex-1 sm:flex-none px-3 py-2 rounded-lg bg-[#FF6B35] text-white text-xs font-semibold hover:opacity-90 transition flex items-center justify-center gap-1"
+                      title="Send SMS/Text"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                      </svg>
+                      <span class="hidden sm:inline">SMS</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <script>
+      // Handle status update buttons
+      const statusButtons = document.querySelectorAll('.status-btn');
+      
+      statusButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+          const target = e.target as HTMLButtonElement;
+          const enquiryId = target.dataset.enquiryId;
+          const newStatus = target.dataset.status;
+
+          if (!enquiryId || !newStatus) return;
+
+          // Disable button and show loading state
+          target.disabled = true;
+          const originalText = target.textContent;
+          target.textContent = 'Updating...';
+
+          try {
+
+
+            // Call server-side API endpoint
+            const response = await fetch('/api/enquiries/update-status', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id: enquiryId,
+                status: newStatus
+              })
+            });
+
+
+            
+            // Check if response has content
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+              throw new Error('Server returned non-JSON response');
+            }
+
+            const result = await response.json();
+
+            if (!response.ok) {
+              throw new Error(result.error || 'Failed to update status');
+            }
+
+            // Reload page to show updated status
+            window.location.reload();
+          } catch (error: any) {
+            alert('Error updating status: ' + error.message);
+            
+            // Re-enable button
+            target.disabled = false;
+            target.textContent = originalText;
+          }
+        });
+      });
+
+      // Handle quick reply forms
+      const replyForms = document.querySelectorAll('.reply-form');
+      
+      replyForms.forEach(form => {
+        const formElement = form as HTMLFormElement;
+        const input = formElement.querySelector('input') as HTMLInputElement;
+        const email = formElement.dataset.email;
+        const phone = formElement.dataset.phone;
+        const name = formElement.dataset.name;
+
+        // Handle Copy Email button click
+        const copyEmailBtn = formElement.querySelector('[data-type="copy-email"]') as HTMLButtonElement;
+        copyEmailBtn?.addEventListener('click', async (e) => {
+          e.preventDefault();
+        
+          const message = input.value.trim();
+          if (!message) {
+            alert('Please type a message');
+            return;
+          }
+
+          // Create formatted email text
+          const emailText = `To: ${email}
+Subject: Re: Your enquiry - Ram Photo Studio
+
+Hi ${name},
+
+${message}
+
+Best regards,
+Ram Photo Studio
+Contact: +91 9412000718`;
+
+          try {
+            // Copy to clipboard
+            await navigator.clipboard.writeText(emailText);
+            
+            // Show success feedback
+            const originalText = copyEmailBtn.innerHTML;
+            copyEmailBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="hidden sm:inline">Copied!</span>';
+            copyEmailBtn.classList.add('bg-green-600');
+            
+            setTimeout(() => {
+              copyEmailBtn.innerHTML = originalText;
+              copyEmailBtn.classList.remove('bg-green-600');
+            }, 2000);
+
+            // Clear input
+            input.value = '';
+            
+            // Show instructions
+            alert('Email text copied! Now:\n1. Open Gmail (gmail.com)\n2. Click Compose\n3. Paste (Ctrl+V) the email\n4. Send');
+          } catch (error) {
+            alert('Failed to copy. Please try again or copy manually:\n\n' + emailText);
+          }
+        });
+
+        // Handle WhatsApp button click
+        const whatsappBtn = formElement.querySelector('[data-type="whatsapp"]') as HTMLButtonElement;
+        whatsappBtn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          const message = input.value.trim();
+          if (!message) {
+            alert('Please type a message');
+            return;
+          }
+
+          // Create WhatsApp link with pre-filled message
+          const whatsappMessage = encodeURIComponent(`Hi ${name},\n\n${message}\n\nBest regards,\nRam Photo Studio`);
+          const whatsappLink = `https://wa.me/${phone}?text=${whatsappMessage}`;
+
+          // Open WhatsApp in new tab
+          window.open(whatsappLink, '_blank');
+
+          // Clear input after sending
+          input.value = '';
+        });
+
+        // Handle SMS button click
+        const smsBtn = formElement.querySelector('[data-type="sms"]') as HTMLButtonElement;
+        smsBtn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          const message = input.value.trim();
+          if (!message) {
+            alert('Please type a message');
+            return;
+          }
+
+          // Create SMS link with pre-filled message
+          const smsMessage = encodeURIComponent(`Hi ${name},\n\n${message}\n\nBest regards,\nRam Photo Studio\nContact: +91 9412000718`);
+          const smsLink = `sms:${phone}?body=${smsMessage}`;
+
+          // Open SMS app
+          window.location.href = smsLink;
+
+          // Clear input after sending
+          setTimeout(() => {
+            input.value = '';
+          }, 500);
+        });
+      });
+
+      // Handle delete buttons
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+      
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+          const target = e.target as HTMLElement;
+          const buttonElement = target.closest('.delete-btn') as HTMLButtonElement;
+          const enquiryId = buttonElement?.dataset.enquiryId;
+
+          if (!enquiryId) return;
+
+          // Confirm deletion
+          if (!confirm('Are you sure you want to permanently delete this enquiry? This action cannot be undone.')) {
+            return;
+          }
+
+          // Disable button and show loading state
+          buttonElement.disabled = true;
+          const originalHTML = buttonElement.innerHTML;
+          buttonElement.innerHTML = '<svg class="w-3 h-3 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="hidden sm:inline ml-1">Deleting...</span>';
+
+          try {
+            // Call server-side API endpoint
+            const response = await fetch('/api/enquiries/delete', {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id: enquiryId
+              })
+            });
+
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+              throw new Error('Server returned non-JSON response');
+            }
+
+            const result = await response.json();
+
+            if (!response.ok) {
+              throw new Error(result.error || 'Failed to delete enquiry');
+            }
+
+            // Reload page to show updated list
+            window.location.reload();
+          } catch (error: any) {
+            alert('Error deleting enquiry: ' + error.message);
+            
+            // Re-enable button
+            buttonElement.disabled = false;
+            buttonElement.innerHTML = originalHTML;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

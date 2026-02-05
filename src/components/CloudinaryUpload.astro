@@ -1,0 +1,203 @@
+---
+// This is a sample component showing how to upload files to Cloudinary
+---
+
+<div class="cloudinary-upload-container">
+    <h2>Upload Media to Cloudinary</h2>
+
+    <div class="upload-form">
+        <input
+            type="file"
+            id="fileInput"
+            accept="image/*,video/*"
+            class="file-input"
+        />
+
+        <select id="mediaType" class="media-type-select">
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+        </select>
+
+        <button id="uploadBtn" class="upload-btn">Upload</button>
+    </div>
+
+    <div id="uploadStatus" class="upload-status"></div>
+
+    <div id="uploadResult" class="upload-result"></div>
+</div>
+
+<style>
+    .cloudinary-upload-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .upload-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .file-input,
+    .media-type-select {
+        padding: 0.75rem;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+    }
+
+    .upload-btn {
+        padding: 1rem;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+
+    .upload-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+    }
+
+    .upload-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .upload-status {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .upload-status.loading {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .upload-status.success {
+        background: rgba(76, 175, 80, 0.9);
+        color: white;
+    }
+
+    .upload-status.error {
+        background: rgba(244, 67, 54, 0.9);
+        color: white;
+    }
+
+    .upload-result {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 8px;
+    }
+
+    .upload-result img,
+    .upload-result video {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    .result-info {
+        font-size: 0.9rem;
+        color: #333;
+        margin-top: 0.5rem;
+    }
+</style>
+
+<script>
+    const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+    const mediaType = document.getElementById("mediaType") as HTMLSelectElement;
+    const uploadBtn = document.getElementById("uploadBtn") as HTMLButtonElement;
+    const uploadStatus = document.getElementById(
+        "uploadStatus",
+    ) as HTMLDivElement;
+    const uploadResult = document.getElementById(
+        "uploadResult",
+    ) as HTMLDivElement;
+
+    uploadBtn.addEventListener("click", async () => {
+        const file = fileInput.files?.[0];
+
+        if (!file) {
+            showStatus("Please select a file", "error");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("type", mediaType.value);
+        formData.append("folder", "photo-studio");
+
+        try {
+            uploadBtn.disabled = true;
+            showStatus("Uploading...", "loading");
+
+            const response = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showStatus("Upload successful!", "success");
+                displayResult(result, mediaType.value);
+            } else {
+                showStatus(`Upload failed: ${result.error}`, "error");
+            }
+        } catch (error) {
+            showStatus(
+                `Upload error: ${error instanceof Error ? error.message : "Unknown error"}`,
+                "error",
+            );
+        } finally {
+            uploadBtn.disabled = false;
+        }
+    });
+
+    function showStatus(
+        message: string,
+        type: "loading" | "success" | "error",
+    ) {
+        uploadStatus.textContent = message;
+        uploadStatus.className = `upload-status ${type}`;
+    }
+
+    function displayResult(result: any, type: string) {
+        const mediaElement =
+            type === "video"
+                ? `<video src="${result.url}" controls></video>`
+                : `<img src="${result.url}" alt="Uploaded image" />`;
+
+        uploadResult.innerHTML = `
+      ${mediaElement}
+      <div class="result-info">
+        <p><strong>URL:</strong> <a href="${result.url}" target="_blank">${result.url}</a></p>
+        <p><strong>Public ID:</strong> ${result.publicId}</p>
+        ${result.width ? `<p><strong>Dimensions:</strong> ${result.width} x ${result.height}</p>` : ""}
+        ${result.duration ? `<p><strong>Duration:</strong> ${result.duration}s</p>` : ""}
+      </div>
+    `;
+    }
+</script>

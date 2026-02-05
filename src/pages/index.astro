@@ -1,0 +1,534 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+
+const slides = [
+  {
+    image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466650/1D0A9262_1_dszp8w.jpg",
+    title: "Timeless Wedding Stories",
+    subtitle: "Candid moments, cinematic frames, and heartfelt celebrations.",
+    cta: { label: "View Wedding Work", href: "/specialised-in#candid" },
+  },
+  {
+    image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466659/1D0A9943_1_ltwfb6.jpg",
+    mobileImage: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768861992/1D0A9943_3_lw4fcq.jpg", // Replace this with your specific mobile image
+    title: "Signature Portraits",
+    subtitle: "Studio portraits that highlight personality and style.",
+    cta: { label: "Book a Portrait", href: "/still-photography#studio" },
+  },
+  {
+    image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466652/siva-pradeep-5FMmmoNRjEI-unsplash_1_b4zrtw.jpg",
+    title: "Product & Brand Stories",
+    subtitle: "Clean, detailed visuals that make your products stand out.",
+    cta: { label: "Product Shoots", href: "/still-photography#product" },
+  },
+  {
+    image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466651/sabur-ahmed-jishan-Yl4mVK_ho84-unsplash_1_bvifiy.jpg",
+    title: "Precious Baby Moments",
+    subtitle: "Capturing your little one's milestones with warmth and care.",
+    cta: { label: "Baby Photoshoots", href: "/still-photography#baby" },
+  },
+];
+
+const services = [
+  {
+    title: "Still Photography",
+    copy: "Studio, matrimonial, baby, and product shoots with controlled lighting.",
+    href: "/still-photography",
+  },
+  {
+    title: "Videography",
+    copy: "Cinematography, teasers, drone coverage, and wedding invitation films.",
+    href: "/videography",
+  },
+  {
+    title: "Printing Solutions",
+    copy: "Photo gifts, albums, and large-format printing for keepsakes and branding.",
+    href: "/printing-solutions",
+  },
+  {
+    title: "Gift Items",
+    copy: "Personalized photo gifts, sublimation items, cushions, and LED products.",
+    href: "/gifts-items",
+  },
+];
+
+const featuredShots = [
+  { image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466654/1D0A7901_1_o2jwv7.jpg", category: "Studio Photoshoot" },
+  { image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466665/DSC00572_2_s8w3t2.jpg", category: "Outdoor Photography" },
+  { image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768466656/1D0A0153_1_rigwk7.jpg", category: "Wedding Photography" },
+  { image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768467053/1D0A2116_1_olecxt.jpg", category: "Product Photoshoot" },
+  { image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768414339/baby_photographer_in_Pune_066937_1_njvfbw.jpg", category: "Baby Photoshoot" },
+  { image: "https://res.cloudinary.com/djrs9oqz7/image/upload/v1768308541/Unique-gifts-Home-decor-gift-ideas-A-polyresin-lamp-featuring-a-tree-and-deer-printed-pattern-1024x585_1_qdxtdj.webp", category: "Gift Items" },
+];
+---
+
+<BaseLayout showHeader={true}>
+  <section
+    id="heroSlider"
+    class="relative w-full max-w-[100%] h-[60vh] sm:h-[70vh] md:h-[80vh] mx-auto
+      overflow-hidden rounded-lg md:rounded-2xl shadow-2xl
+      bg-gray-900 text-white my-auto"
+    style="margin-top: calc((100vh - 80vh) / 2 - 60px); margin-bottom: calc((100vh - 80vh) / 2);"
+  >
+    <div class="absolute inset-0">
+      {
+        slides.map((slide, index) => (
+          <div
+            data-slide
+            data-index={index}
+            class={`absolute inset-0 transition-opacity duration-700 ease-in-out
+            ${index === 0 ? "opacity-100 z-10" : "opacity-0 z-0"}
+          `}
+          >
+            <!-- Desktop Image -->
+            <img 
+              src={slide.image} 
+              alt={slide.title}
+              class="absolute inset-0 w-full h-full object-cover hidden md:block"
+            />
+            
+            <!-- Mobile Image (Fall back to desktop image if not provided) -->
+            <img 
+              src={slide.mobileImage || slide.image} 
+              alt={slide.title}
+              class="absolute inset-0 w-full h-full object-cover md:hidden"
+            />
+
+            <!-- Mobile: lighter overlay for brighter images, Desktop: darker overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/50 md:from-black/60 md:via-black/50 md:to-black/70" />
+            <!-- Mobile: content positioned lower with top padding to prevent cutoff, Desktop: centered -->
+            <div class="relative h-full flex items-end md:items-center px-4 sm:px-6 md:px-12 pt-16 pb-20 md:pt-0 md:pb-0">
+              <div class="max-w-2xl flex flex-col items-start">
+                <p
+                  class="uppercase tracking-widest text-xs sm:text-sm font-bold text-[#FFD700] drop-shadow-[0_2px_8px_rgba(255,215,0,0.8)] animate-pulse"
+                 style="text-shadow: 0 0 20px rgba(255, 165, 0, 0.5);"
+                >
+                  Ram Photo Studio
+                </p>
+                <h2
+                   class="mt-2 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
+                  style="line-height: 1.1;"
+                >
+                  {slide.title}
+                </h2>
+                <p
+                  class="mt-2 text-sm sm:text-base md:text-lg text-[#F3F4F6] max-w-xl leading-snug drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+                  style="line-height: 1.4;"
+                >
+                  {slide.subtitle}
+                </p>
+                <div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                  <a
+                    href="/contact"
+                    class="
+                    group relative inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-full overflow-hidden
+                    bg-gradient-to-br from-[#20C997] via-[#17B589] to-[#10A37F] text-white font-bold text-sm sm:text-base
+                    hover:from-[#25E5B0] hover:via-[#1AC99A] hover:to-[#12B588]
+                    transition-all duration-300
+                    shadow-[0_4px_12px_rgba(32,201,151,0.3),0_2px_6px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.15)]
+                    hover:shadow-[0_6px_20px_rgba(32,201,151,0.4),0_3px_10px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.4)]
+                    hover:scale-105 sm:hover:scale-110 hover:-translate-y-1
+                    active:scale-100 sm:active:scale-105 active:translate-y-0
+                    border border-[#2DFFC7]/20
+                    w-full sm:w-auto justify-center
+                  "
+                  >
+                    <span class="relative z-10 flex items-center gap-1.5 sm:gap-2">
+                      Book a session
+                      <span
+                        class="group-hover:translate-x-1 transition-transform duration-300"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  </a>
+                  <a
+                    href="/gallery"
+                    class="
+                    group inline-flex items-center gap-1.5 sm:gap-2
+                    text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FF8C00] font-bold text-sm sm:text-base md:text-lg
+                    hover:from-[#FFA500] hover:via-[#FF8C00] hover:to-[#FF6B00]
+                    drop-shadow-[0_2px_6px_rgba(255,165,0,0.8)]
+                    hover:gap-2 sm:hover:gap-3 hover:drop-shadow-[0_4px_12px_rgba(255,140,0,1)]
+                    transition-all duration-300
+                  "
+                    style="filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.6));"
+                  >
+                    View recent work
+                    <span
+                      class="group-hover:translate-x-1 transition-transform duration-300"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="pointer-events-none absolute inset-0
+        bg-gradient-to-t from-black/20 via-transparent to-black/10"
+    >
+    </div>
+
+    <div
+      class="absolute inset-x-0 bottom-4 sm:bottom-6 md:bottom-8 flex justify-center items-center gap-2 sm:gap-2.5 z-20"
+    >
+      {
+        slides.map((_, index) => (
+          <button
+            type="button"
+            data-dot
+            data-index={index}
+            class="
+            h-2.5 w-2.5 rounded-full
+            transition-all duration-300
+            bg-white/50 hover:bg-white/80
+          "
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    {
+      services.map((service) => (
+        <a
+          href={service.href}
+          class="
+          group rounded-xl
+          bg-[#FBF7F2]
+          border-2 border-[#D4AF37]/30
+          p-6 shadow-md hover:shadow-xl transition-all duration-300
+          hover:-translate-y-1 hover:border-[#D4AF37]
+        "
+        >
+          <h3 class="text-xl font-bold mb-2 text-[#2A2E35]">{service.title}</h3>
+          <p class="text-[#3A3A3A] leading-relaxed text-sm">{service.copy}</p>
+          <span
+            class="mt-4 inline-flex items-center gap-2 text-[#F59E0B] font-semibold text-base"
+            style="text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);"
+          >
+            Learn more <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      ))
+    }
+  </section>
+
+  <section
+    class="mt-16 rounded-xl overflow-hidden
+      bg-[#FBF7F2]
+      border-2 border-[#D4AF37]/30
+      shadow-md hover:shadow-xl transition-all duration-300"
+  >
+    <div class="grid md:grid-cols-2">
+      <div class="p-8 md:p-12 flex flex-col justify-center space-y-4">
+        <p
+          class="uppercase tracking-widest text-xs text-[#F59E0B] font-semibold"
+          style="text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);"
+        >
+          About the studio
+        </p>
+        <h3
+          class="text-2xl md:text-3xl font-bold leading-tight text-gray-900 dark:text-white"
+        >
+          Crafting Timeless Visual Stories for Over Five Decades
+        </h3>
+        <p
+          class="text-base text-gray-600 dark:text-gray-300 leading-relaxed text-justify"
+        >
+          Ram Photo Studio is a trusted name in professional photography,
+          videography, and printing, proudly serving generations for more than <b
+            >50 years</b
+          >. Rooted in experience and driven by innovation, we combine artistic
+          vision with advanced technology to preserve memories with
+          authenticity, elegance, and precision.
+        </p>
+        <div class="flex gap-3">
+          <a
+            href="/about-us"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+              bg-gradient-to-r from-[#20C997] to-[#10A37F] text-white font-semibold
+              hover:from-[#10A37F] hover:to-[#0D8F6E]
+              hover:scale-105 hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
+              transition-all duration-300
+              shadow-[0_4px_10px_rgba(0,0,0,0.2),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+              hover:translate-y-[-2px]
+              active:translate-y-[1px] active:shadow-[0_2px_8px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+          >
+            About Us
+          </a>
+          <a
+            href="/gifts-items"
+            class="inline-flex items-center gap-2 text-[#F59E0B] font-semibold text-base"
+            style="text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);"
+          >
+            See Gifts →
+          </a>
+        </div>
+      </div>
+      <div
+        class="hidden md:block bg-cover bg-center
+          min-h-[320px] relative"
+        style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80');"
+      >
+        <div class="h-full w-full bg-black/20"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <p
+          class="uppercase tracking-widest text-xs text-[#F59E0B] font-semibold"
+          style="text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);"
+        >
+          Featured work
+        </p>
+        <h3
+          class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
+        >
+          Recent captures
+        </h3>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-5 py-3 rounded-full
+          bg-gradient-to-r from-[#C9954D] to-[#B8894E] text-white font-semibold
+          hover:from-[#D4A056] hover:to-[#C9954D]
+          hover:scale-105 hover:shadow-[0_8px_30px_rgba(201,149,77,0.5),0_2px_10px_rgba(0,0,0,0.2)]
+          transition-all duration-300
+          shadow-[0_4px_15px_rgba(201,149,77,0.4),0_2px_5px_rgba(0,0,0,0.15),inset_0_-2px_5px_rgba(0,0,0,0.2),inset_0_2px_5px_rgba(255,255,255,0.3)]
+          hover:translate-y-[-2px]
+          active:translate-y-[1px] active:shadow-[0_2px_10px_rgba(201,149,77,0.3),inset_0_2px_5px_rgba(0,0,0,0.3)]"
+      >
+        Plan your shoot
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {
+        featuredShots.map((shot, index) => (
+          <div
+            class="
+            group relative rounded-lg overflow-hidden aspect-[4/5]
+            bg-gray-100 dark:bg-gray-800
+            shadow-sm hover:shadow-lg transition cursor-pointer tap-highlight-transparent
+          "
+            data-featured-shot
+            data-image={shot.image}
+            data-category={shot.category}
+          >
+            <img
+              src={shot.image}
+              alt={`${shot.category} - Featured shot ${index + 1}`}
+              loading="lazy"
+              class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+            />
+            <!-- Overlay for Desktop Hover -->
+            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/95 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-end justify-start p-4">
+              <span class="text-white font-semibold text-lg md:text-xl tracking-wide">
+                {shot.category}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to create"
+    subtitle="Let’s plan your next shoot or gift."
+    description="Quick response via call/WhatsApp. Flexible studio and on-location options."
+  />
+
+  <!-- Image Modal -->
+  <div
+    id="imageModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Backdrop with blur -->
+    <div 
+        id="modalBackdrop"
+        class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+    ></div>
+
+    <!-- Close button -->
+    <button
+      id="closeModalBtn"
+      class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 focus:outline-none ring-2 ring-white/20"
+      aria-label="Close modal"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Image Container -->
+    <div class="relative z-10 w-full max-w-5xl h-full flex items-center justify-center pointer-events-none">
+       <img
+        id="modalImg"
+        src=""
+        alt="Full screen view"
+        class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl pointer-events-auto scale-95 transition-transform duration-300"
+      />
+      <!-- Caption Overlay -->
+      <!-- Caption Overlay -->
+      <div 
+        id="modalCaptionContainer"
+        class="absolute inset-x-0 bottom-6 flex justify-center pointer-events-none opacity-0 transition-opacity duration-300 delay-100"
+      >
+        <span 
+          id="modalCaption" 
+          class="bg-black/60 backdrop-blur-md text-white/95 px-6 py-2 rounded-full font-bold text-lg md:text-xl tracking-wide shadow-lg border border-white/10"
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Hero slider carousel functionality
+    const hero = document.getElementById("heroSlider");
+    if (hero) {
+      const slidesEls = Array.from(hero.querySelectorAll("[data-slide]"));
+      const dotsEls = Array.from(hero.querySelectorAll("[data-dot]"));
+
+      let currentIndex = 0;
+      let timer;
+
+      const activate = (index) => {
+        slidesEls.forEach((el, i) => {
+          const isActive = i === index;
+          el.classList.toggle("opacity-100", isActive);
+          el.classList.toggle("z-10", isActive);
+          el.classList.toggle("opacity-0", !isActive);
+          el.classList.toggle("z-0", !isActive);
+        });
+
+        dotsEls.forEach((dot, i) => {
+          const isActive = i === index;
+          if (isActive) {
+            dot.classList.remove("bg-white/50");
+            dot.classList.add("bg-white", "w-10");
+          } else {
+            dot.classList.remove("bg-white", "w-10");
+            dot.classList.add("bg-white/50");
+          }
+        });
+
+        currentIndex = index;
+      };
+
+      const nextSlide = () => {
+        const nextIndex = (currentIndex + 1) % slidesEls.length;
+        activate(nextIndex);
+      };
+
+      const start = () => {
+        stop();
+        timer = setInterval(nextSlide, 3000);
+      };
+
+      const stop = () => {
+        if (timer) clearInterval(timer);
+      };
+
+      dotsEls.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.dataset.index);
+          activate(index);
+          start();
+        });
+      });
+
+      hero.addEventListener("mouseenter", stop);
+      hero.addEventListener("mouseleave", start);
+
+      activate(0);
+      start();
+    }
+
+    // Image Modal functionality
+    (function() {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      const modalCaption = document.getElementById("modalCaption");
+      const modalCaptionContainer = document.getElementById("modalCaptionContainer");
+      const closeBtn = document.getElementById("closeModalBtn");
+      const backdrop = document.getElementById("modalBackdrop");
+      const featuredShots = document.querySelectorAll("[data-featured-shot]");
+
+      if (modal && modalImg && closeBtn && backdrop) {
+        const openModal = (src, category) => {
+          modalImg.src = src;
+          if (modalCaption) modalCaption.textContent = category || "";
+          
+          modal.classList.remove("hidden");
+          // Force reflow
+          void modal.offsetWidth;
+          
+          modal.classList.remove("opacity-0");
+          modalImg.classList.remove("scale-95");
+          modalImg.classList.add("scale-100");
+          
+          if (modalCaptionContainer) {
+            modalCaptionContainer.classList.remove("opacity-0");
+          }
+          
+          document.body.style.overflow = "hidden";
+        };
+
+        const closeModal = () => {
+          modal.classList.add("opacity-0");
+          modalImg.classList.remove("scale-100");
+          modalImg.classList.add("scale-95");
+          
+          if (modalCaptionContainer) {
+            modalCaptionContainer.classList.add("opacity-0");
+          }
+          
+          setTimeout(() => {
+            modal.classList.add("hidden");
+            modalImg.src = "";
+            document.body.style.overflow = "";
+          }, 300);
+        };
+
+        featuredShots.forEach((shot) => {
+          shot.addEventListener("click", () => {
+            // Only open modal on mobile (viewport width < 768px)
+            if (window.innerWidth >= 768) return;
+
+            const imgUrl = shot.dataset.image;
+            const category = shot.dataset.category;
+            if (imgUrl) openModal(imgUrl, category);
+          });
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        backdrop.addEventListener("click", closeModal);
+        
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+            closeModal();
+          }
+        });
+      }
+    })();
+  </script>
+</BaseLayout>
